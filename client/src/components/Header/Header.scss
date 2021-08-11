@@ -1,0 +1,34 @@
+@use '../../partials/vairables' as *;
+
+.hd{
+	&__container{
+		display:flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 5rem;
+		background-color: $dark-navy;
+		padding: 1rem;
+	}
+	&__logo{
+		margin: 0;
+		background-image: url("../../assets/logo/high-res/logo.jpg");
+		background-size: 10rem;
+		background-repeat: no-repeat;
+		background-position: center;
+		height: 3rem;
+		width: 10rem;
+	}
+	&__profile{
+		margin: 0;
+		border-radius: 50%;
+		background-color: $light-mint;
+		height:3rem;
+		width: 3rem;
+		cursor: pointer;
+		&:hover{
+			background-color: $mint;
+		}
+	}
+}
+
+

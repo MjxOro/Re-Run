@@ -1,0 +1,36 @@
+@use '../../partials/vairables' as *;
+
+.sidebar{
+	position:fixed;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgb(0, 0, 0, 0.3);
+	display:flex;
+	justify-content: flex-end;
+	&__nav{
+		display: flex;
+		width: 50%;
+		flex-direction: column;
+		background-color: $dark-navy;
+	}
+	&__close-container{
+		display: flex;
+		justify-content: space-between;
+		background-color: $mint;
+	}
+	&__greeting{
+		color: $white;
+	}
+	&__close-icon{
+
+	}
+	&__link-container{
+		display: flex;
+		flex-direction: column;
+	}
+	&__link{
+		color: $white;
+		border-top: 1px solid $light-mint;
+	}
+}
