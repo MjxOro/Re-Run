@@ -39,6 +39,7 @@
 	}
 	&__profile{
 		margin: 0;
+		margin-right: 1rem;
 		border-radius: 50%;
 		background-color: $light-mint;
 		height: 3rem;
@@ -49,25 +50,51 @@
 		}
 	}
 	&__btn-container{
+		align-items: center;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 50%;
 		height: 3rem;
 		width: 3rem;
+		transition: all 500ms ease-in-out;
+		box-sizing: border-box;
+		&--open .hd__burger::before{
+			transform: rotate(45deg) translate(-0.7rem,0.7rem); 
+		}
+		&--open .hd__burger::after{
+			transform: rotate(-45deg) translate(-0.7rem,-0.7rem); 
+		}
 		&:active{
-			background-color:rgb(25, 203, 140,0.2) 
+			background-color:rgb(25, 203, 140,0.2); 
 		}
 	}
-	&__hamburger{
-		height: 2.5rem;
-		width: 2.5rem;
-		&>path{
-			color: $white;
-			height: inherit;
-			width: inherit
+	&__burger{
+		border-radius: 0.25rem;
+		background-color: $white;
+		height: 0.25rem;
+		width: 2rem;
+		transition: all 500ms ease-in-out;
+		&--open{
+			background-color: transparent;
 		}
+		&::before,&::after{
+			content: '';
+			background-color: $white;
+			border-radius: 0.25rem;
+			position: absolute;
+			width: 2rem;
+			height: 0.25rem;
+			transition: all 500ms ease-in-out;
+		}
+		&::before{
+			transform: translateY(-0.5rem) translateX(-1rem);
+		}
+		&::after{
+			transform: translateY(0.5rem) translateX(-1rem);
+		}
+
 	}
+	
 
 }
 

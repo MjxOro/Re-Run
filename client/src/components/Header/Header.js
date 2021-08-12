@@ -29,12 +29,18 @@ class Header extends react.Component {
 					<a className='hd__logo' />
 					<nav className='hd__left-container'>
 						<figure className='hd__profile' />
-						<div className='hd__btn-container'>
-							<HamburgerButton onClick={this.handleSidebar} className='hd__hamburger' />
+			{!this.state.showSidebar ? <div onClick={this.handleSidebar} className='hd__btn-container'>
+							<div className='hd__burger' />
 						</div>
+				:
+						<div onClick={this.handleSidebar} className='hd__btn-container hd__btn-container--open'>
+							<div className='hd__burger hd__burger--open' />
+						</div>
+
+			}
 					</nav>
 			</div>
-				{this.state.showSidebar && <Sidebar close={this.handleSidebar} />}
+				<Sidebar close={this.handleSidebar} blnClose={this.state.showSidebar} />
 			</header>
 		)
 	}
