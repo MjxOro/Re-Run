@@ -1,0 +1,101 @@
+@use '../../partials/vairables' as *;
+@use '../../partials/mixins' as *;
+
+.hd{
+	background-color: $dark-navy;
+	display:flex;
+	justify-content: center;
+	&__container{
+		display:flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 5rem;
+		width: 100%;
+		max-width: 550px;
+		background-color: $dark-navy;
+		padding: 1rem;
+		@include tablet{
+			padding: 1rem 2.5rem;
+			max-width: 1080px;
+		}
+		@include desktop{
+			max-width: 1280px;
+		}
+	}
+	&__logo{
+		cursor: pointer;
+		margin: 0;
+		background-image: url("../../assets/logo/high-res/logo.jpg");
+		background-size: 10rem;
+		background-repeat: no-repeat;
+		background-position: center;
+		height: 3rem;
+		width: 10rem;
+	}
+	&__left-container{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	&__profile{
+		margin: 0;
+		margin-right: 1rem;
+		border-radius: 50%;
+		background-color: $light-mint;
+		height: 3rem;
+		width: 3rem;
+		cursor: pointer;
+		&:hover{
+			background-color: $mint;
+		}
+	}
+	&__btn-container{
+		align-items: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 3rem;
+		width: 3rem;
+		transition: all 500ms ease-in-out;
+		box-sizing: border-box;
+		&--open .hd__burger::before{
+			transform: rotate(45deg) translate(-0.7rem,0.7rem); 
+		}
+		&--open .hd__burger::after{
+			transform: rotate(-45deg) translate(-0.7rem,-0.7rem); 
+		}
+		&:active{
+			background-color:rgb(25, 203, 140,0.2); 
+		}
+	}
+	&__burger{
+		border-radius: 0.25rem;
+		background-color: $white;
+		height: 0.25rem;
+		width: 2rem;
+		transition: all 500ms ease-in-out;
+		&--open{
+			background-color: transparent;
+		}
+		&::before,&::after{
+			content: '';
+			background-color: $white;
+			border-radius: 0.25rem;
+			position: absolute;
+			width: 2rem;
+			height: 0.25rem;
+			transition: all 500ms ease-in-out;
+		}
+		&::before{
+			transform: translateY(-0.5rem) translateX(-1rem);
+		}
+		&::after{
+			transform: translateY(0.5rem) translateX(-1rem);
+		}
+
+	}
+	
+
+}
+
+
