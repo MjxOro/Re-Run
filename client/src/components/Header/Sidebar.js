@@ -19,7 +19,7 @@ const Sidebar = (props) => {
 				</nav>
 		</section>
 			:
-			<section className='sidebar sidebar--closed' >
+			<section className='sidebar sidebar--closed' hidden>
 				<nav className='sidebar__nav sidebar__nav--closed'>
 					<div className='sidebar__close-container'>
 						<h2 className='sidebar__greeting'>Hello! {'USERNAME'}</h2>
