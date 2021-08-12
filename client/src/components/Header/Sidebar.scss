@@ -1,4 +1,5 @@
 @use '../../partials/vairables' as *;
+@use '../../partials/mixins' as *;
 
 .sidebar{
 	position:fixed;
@@ -8,21 +9,45 @@
 	background-color: rgb(0, 0, 0, 0.3);
 	display:flex;
 	justify-content: flex-end;
+	@include desktop{
+		pointer-events: none;
+		background-color: initial;
+		height:auto;
+		width: 100%;
+		max-width: 1480px;
+		top: 7rem;
+	}
+
 	&__nav{
+		pointer-events: all;
 		display: flex;
 		width: 50%;
 		flex-direction: column;
 		background-color: $dark-navy;
+		@include desktop{
+			width: 15rem;
+		}
 	}
+
 	&__close-container{
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-end;
 		background-color: $mint;
+		height: 4rem;
 	}
 	&__greeting{
+		margin: 0;
 		color: $white;
 	}
 	&__close-icon{
+		margin: 0;
+		transform: scaleX(1);
+		width: 2rem;
+		height: 2rem;
+		cursor: pointer;
+		&>path{
+			fill: $white;
+		}
 
 	}
 	&__link-container{
@@ -31,6 +56,6 @@
 	}
 	&__link{
 		color: $white;
-		border-top: 1px solid $light-mint;
+		border-bottom: 1px solid $white;
 	}
 }

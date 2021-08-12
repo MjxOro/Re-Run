@@ -1,15 +1,29 @@
 @use '../../partials/vairables' as *;
+@use '../../partials/mixins' as *;
 
 .hd{
+	background-color: $dark-navy;
+	display:flex;
+	justify-content: center;
 	&__container{
 		display:flex;
 		justify-content: space-between;
 		align-items: center;
 		height: 5rem;
+		width: 100%;
+		max-width: 550px;
 		background-color: $dark-navy;
 		padding: 1rem;
+		@include tablet{
+			padding: 1rem 2.5rem;
+			max-width: 1080px;
+		}
+		@include desktop{
+			max-width: 1280px;
+		}
 	}
 	&__logo{
+		cursor: pointer;
 		margin: 0;
 		background-image: url("../../assets/logo/high-res/logo.jpg");
 		background-size: 10rem;
@@ -18,17 +32,43 @@
 		height: 3rem;
 		width: 10rem;
 	}
+	&__left-container{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
 	&__profile{
 		margin: 0;
 		border-radius: 50%;
 		background-color: $light-mint;
-		height:3rem;
+		height: 3rem;
 		width: 3rem;
 		cursor: pointer;
 		&:hover{
 			background-color: $mint;
 		}
 	}
+	&__btn-container{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		height: 3rem;
+		width: 3rem;
+		&:active{
+			background-color:rgb(25, 203, 140,0.2) 
+		}
+	}
+	&__hamburger{
+		height: 2.5rem;
+		width: 2.5rem;
+		&>path{
+			color: $white;
+			height: inherit;
+			width: inherit
+		}
+	}
+
 }
 
 

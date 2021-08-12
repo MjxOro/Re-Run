@@ -1,12 +1,13 @@
 import './Sidebar.scss'
+import { ReactComponent as CloseButton } from '../../assets/chevron_right-24px.svg'
 
-const Sidebar = () => {
+const Sidebar = (props) => {
 	return(
 		<section className='sidebar'>
 			<nav className='sidebar__nav'>
 				<div className='sidebar__close-container'>
 					<h2 className='sidebar__greeting'>Hello! {'USERNAME'}</h2>
-					<figure className='sidebar__close-icon'/>
+					<CloseButton onClick={props.close} className='sidebar__close-icon'/>
 				</div>
 				<div className='sidebar__link-container'>
 					<a className='sidebar__link'>Home</a>
