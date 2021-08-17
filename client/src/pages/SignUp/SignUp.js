@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from '../../components/Header/Header'
+import SignUpForm from '../../components/SignUpForm/SignUpForm'
+
 
 class SignUp extends React.Component{
 	state = {
@@ -12,6 +14,7 @@ class SignUp extends React.Component{
 	render = () =>{
 		return(
 			<>
+				<SignUpForm />
 			</>
 		)
 	}
