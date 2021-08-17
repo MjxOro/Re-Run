@@ -7,48 +7,129 @@
 	height: 100%;
 	margin: 0;
 	box-sizing: border-box;
+	@include tablet{
+		display: flex;
+		align-items: center;
+	}
+	@include desktop{
+		justify-content: center;
+	}
 	&__form{
 		margin: 0;
 		padding: 0 1rem;
-		width: inherit;
-		height:inherit;
+		width: 100%;
+		height:100%;
 		display: flex;
 		flex-direction: column;
-
+		@include tablet{
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid $light-mint;
+			border-radius: 1rem;
+			padding: 0;
+			margin-top: 10rem;
+		}
+		@include desktop{
+			max-width: 1280px;
+			height: auto;
+		}
 	}
+	&__left{
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		@include tablet{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			width: 50%;
+			padding: 0 2.5rem;
+		}
+	}
+	&__art-container{
+		@include tablet{
+			margin: 0;
+			width: 50%;
+			height: 37rem;
+			box-sizing: border-box;
+			background-image: url('../../assets/formImage3.jpeg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			border-radius: 0 1rem 1rem 0;
+			&--img1{
+				background-image: url('../../assets/formImage1.jpeg');
+				background-size: fill;
+				@include desktop{
+					background-position: center -15rem;
+				}
+			}
+			&--img2{
+				background-image: url('../../assets/formImage2.jpeg');
+				background-size: fill;
+				@include desktop{
+					background-position: center -17rem;
+				}
+			}
+		}
+	}
+	&__art{
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+
 	&__title{
+		text-align: left;
 		color: $white;
 		margin-bottom: 1rem;
 		font-size: 2.5rem;
+		width: 100%;
+		max-width: 475px;
 	}
 	&__Oauth{
 		height: 5rem;
 		margin-bottom: 1rem;
 	}
 	&__label{
+		text-align: left;
+		width: 100%;
+		max-width: 475px;
 		color: $white;
 		margin-bottom: 0.25rem;
 	}
 	&__input{
 		width: 100%;
-		max-width: 100%;
+		max-width: 475px;
 		height: 3rem;
 		border-radius: 0.75rem;
 		margin-bottom: 1rem;
-		border: 2px solid grey;
+		border: 2px solid $white;
+		@include tablet{
+		}
 		&:focus{
 			outline:none;
 			border: 2px solid $light-mint;
 			border-radius: 0.75rem;
 		}
+		&::placeholder{
+			color: $dark-navy;
+		}
 	}
 	&__button{
 		margin: 1rem 0;
+		width: 100%;
+		max-width: 475px;
 		height: 3rem;
 		border-radius: 0.75rem;
 		border: none;
 		color: $white;
 		background: linear-gradient(90deg, rgba(193,245,223,1) 0%, rgba(139,237,196,1) 0%, rgba(110,232,181,1) 6%, rgba(95,230,173,1) 23%, rgba(91,229,171,1) 72%, rgba(25,203,140,1) 93%);
+		@include tablet{
+		}
 	}
 
 	&__login-container{
