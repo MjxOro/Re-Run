@@ -1,4 +1,5 @@
 @use '../../partials/vairables' as *;
+@use '../../partials/mixins' as *;
 
 body{
 	background-color: $dark-navy;
@@ -20,11 +21,15 @@ body{
 		border-radius: 0.5rem;
 		box-shadow: 0 4px 12px 4px rgba(255,255,255,.2);
 		min-width: 12rem;
-		height: 15rem;
+		max-height: 15rem;
 		display:flex;
 		flex-direction: column;
 		box-sizing: border-box;
 		color: $white;
+		@include tablet{
+			min-width: 17rem;
+			max-height: 26rem;
+		}
 		&:first-child{
 			margin-left: 5rem;
 		}
@@ -34,6 +39,28 @@ body{
 		object-fit: cover;
 		height: 70%;
 		width: inherit;
+	}
+	&__text-container{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 0.5rem;
+	}
+	&__title{
+		font-size: 1rem;
+		margin:0;
+		margin-bottom: 0.5rem;
+		@include tablet{
+			margin: 1rem 0;
+			font-size: 2rem;
+		}
+	}
+	&__price{
+
+		margin: 0;
+		@include tablet{
+			font-size: 2rem;
+		}
 	}
 
 }

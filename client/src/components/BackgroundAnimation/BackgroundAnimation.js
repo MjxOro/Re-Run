@@ -5,12 +5,12 @@ import { motion } from 'framer-motion'
 const BackgroundAnimation = (props) =>{
 	const marqueeVariants ={
 		animate: {
-			x: [0,props.direction,0],
+			x: [0,props.direction],
 			transition: {
 				x:{
-					repeat:Infinity,
-					reapeatType:"loop",
-					duration: 30,
+					//repeat:Infinity,
+					//reapeatType:"loop",
+					duration: 6,
 					ease: "linear",
 				},
 			},
