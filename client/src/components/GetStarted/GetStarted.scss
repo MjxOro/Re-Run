@@ -1,0 +1,62 @@
+@use '../../partials/vairables' as *;
+
+.start{
+	pointer-events: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	background-color: rgb(0,0,0,0.25);
+	height: 100%;
+	width: 100%;
+
+
+	&__container{
+		pointer-events: none;
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items:center;
+		position: absolute;
+		color: $white;
+	}
+	&__logo{
+		margin: 0;
+		width: 15rem;
+		height: 10rem;
+		background-image: url('../../assets/logo/high-res/logo-transparent.png');
+		background-size: 15rem;
+		background-repeat: no-repeat;
+	}
+	&__title{
+		text-align: center;
+		margin:0;
+	}
+	&__slogan{
+		display:flex;
+		justify-content: flex-start;
+		margin: 0;
+
+	}
+	&__text{
+		min-width: 50%;
+		text-align: right;
+	}
+	&__text2{
+		min-width: 50%;
+	}
+	&__btn{
+		pointer-events: all;
+		color: $dark-navy;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-self: center;
+		height: 2rem;
+		width: 6rem;
+		text-decoration: none;
+		background-color: $mint;
+
+	}
+}
