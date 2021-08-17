@@ -4,11 +4,13 @@ import Header from './components/Header/Header';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import LandingPage from './pages/LandingPage/LandingPage';
 import SignUp from './pages/SignUp/SignUp';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 function App() {
   return (
 		<BrowserRouter>
 			<Switch>
+				<Route path='/login' component={LoginPage}/>
 				<Route path='/register' component={SignUp} />
 				<Route path='/' component={LandingPage} />
 			</Switch>
