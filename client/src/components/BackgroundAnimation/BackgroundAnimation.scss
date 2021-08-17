@@ -1,0 +1,39 @@
+@use '../../partials/vairables' as *;
+
+body{
+	background-color: $dark-navy;
+}
+
+.banimation{
+	padding: 1rem 0;
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	overflow: auto;
+	&::-webkit-scrollbar{
+		display:none;
+	}
+	&__card{
+		margin: 0 1rem;
+		border: 1px solid $light-mint;
+		border-radius: 0.5rem;
+		box-shadow: 0 4px 12px 4px rgba(255,255,255,.2);
+		min-width: 12rem;
+		height: 15rem;
+		display:flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		color: $white;
+		&:first-child{
+			margin-left: 5rem;
+		}
+	}
+	&__image{
+		border-radius: 0.5rem 0.5rem 0rem 0rem;
+		object-fit: cover;
+		height: 70%;
+		width: inherit;
+	}
+
+}
