@@ -29,7 +29,7 @@ const GetStarted = (props) =>{
 					className='start__text2'>{props.cycle}</motion.h1>
 					</AnimatePresence>
 				</div>
-				<Link to='/signup' className='start__btn'>Get Started</Link>
+				<Link to='/register' className='start__btn'>Get Started</Link>
 			</div>
 		</main>
 	)
