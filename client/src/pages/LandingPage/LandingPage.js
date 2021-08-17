@@ -10,7 +10,7 @@ class LandingPage extends react.Component{
 		postCards: Data,
 		title2: ['Run','Fresh','Cycle'],
 		index: 0,
-		direction: [1000,-1000],
+		direction: [5000,-5000],
 	}
 
 	componentDidMount = () =>{
@@ -23,7 +23,7 @@ class LandingPage extends react.Component{
 			else{
 				this.setState({index: 0})
 			}
-		},5000)
+		},3500)
 
 	}
 	componentWillUnmount = () =>{
