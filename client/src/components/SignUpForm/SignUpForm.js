@@ -8,6 +8,8 @@ const SignUpForm = () =>{
 		<section className='signup'>
 			<form className='signup__form'>
 				<h1 className='signup__title'>Sign Up</h1>
+				<div className='signup__Oauth'>
+				</div>
 				<label className='signup__label'>Username</label>
 				<input name='username' className='signup__input' placeholder='Username'/>
 				<label className='signup__label'>Email</label>

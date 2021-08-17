@@ -1,13 +1,68 @@
-@use '../../partials/variables' as *;
+@use '../../partials/vairables' as *;
 @use '../../partials/mixins' as *;
+@use '../../partials/globals';
 
 .signup{
+	max-width: 100%;
+	height: 100%;
+	margin: 0;
+	box-sizing: border-box;
 	&__form{
+		margin: 0;
+		padding: 0 1rem;
+		width: inherit;
+		height:inherit;
+		display: flex;
+		flex-direction: column;
 
 	}
 	&__title{
-
+		color: $white;
+		margin-bottom: 1rem;
+		font-size: 2.5rem;
+	}
+	&__Oauth{
+		height: 5rem;
+		margin-bottom: 1rem;
 	}
 	&__label{
+		color: $white;
+		margin-bottom: 0.25rem;
+	}
+	&__input{
+		width: 100%;
+		max-width: 100%;
+		height: 3rem;
+		border-radius: 0.75rem;
+		margin-bottom: 1rem;
+		border: 2px solid grey;
+		&:focus{
+			outline:none;
+			border: 2px solid $light-mint;
+			border-radius: 0.75rem;
+		}
+	}
+	&__button{
+		margin: 1rem 0;
+		height: 3rem;
+		border-radius: 0.75rem;
+		border: none;
+		color: $white;
+		background: linear-gradient(90deg, rgba(193,245,223,1) 0%, rgba(139,237,196,1) 0%, rgba(110,232,181,1) 6%, rgba(95,230,173,1) 23%, rgba(91,229,171,1) 72%, rgba(25,203,140,1) 93%);
+	}
+
+	&__login-container{
+		display:flex;
+		align-items: center;
+		justify-content: center;
+	}
+	&__text{
+		color: $white;
+
+	}
+	&__link{
+		margin-left: 0.25rem;
+		color: $light-mint;
+
 	}
 }
