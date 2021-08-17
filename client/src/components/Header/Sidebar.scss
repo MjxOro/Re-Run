@@ -1,5 +1,6 @@
 @use '../../partials/vairables' as *;
 @use '../../partials/mixins' as *;
+@use '../../partials/globals';
 
 .sidebar{
 	pointer-events: none;
