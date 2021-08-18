@@ -1,0 +1,172 @@
+@use '../../partials/vairables' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals';
+
+.hero{
+	&__container{
+		margin: 0;
+		display:flex;
+		flex-direction: column;
+		height: 28rem;
+		background-color: rgb(0,0,0,0.25);
+		@include tablet{
+			height: 35rem;
+		}
+		@include desktop{
+			height: 50rem;
+		}
+	}
+	&__img{
+		position: absolute;
+		width: 100vw;
+		max-width: 100%;
+		height: 28rem;
+		z-index: -1;
+		//object-fit: cover;
+		@include tablet{
+			height: 35rem;
+			max-width: 100%;
+		}
+		@include desktop{
+			max-width: 100%;
+			height: 50rem;
+		}
+	}
+	&__searchbar{
+		display:flex;
+		align-items: center;
+		justify-content: center;
+	}
+	&__search{
+		outline: none;
+		width: 50%;
+		max-width: 475px;
+		height: 2rem;
+		align-self: center;
+		margin: 1rem 0;
+		border-radius: 1rem 0 0 1rem;
+		border: 2px solid grey;
+		border-right: none;
+		padding: 0 1rem;
+		&:focus{
+			outline:none;
+			border: 2px solid $light-mint;
+			border-right: none;
+		}
+		@include tablet{
+			height: 3rem;
+			max-width: 1080px;
+		}
+	}
+	&__btn{
+		outline: none;
+		cursor: pointer;
+		height: 1.75rem;
+		width: 1.75rem;
+		padding: 0.25rem;
+		border: 2px solid $light-mint;
+		background-color: $light-mint;
+		border-radius: 0 1rem 1rem 0;
+		@include tablet{
+			padding: 0.75rem;
+			height: 2.8rem;
+			width: 2.8rem;
+		}
+	}
+
+	&__category-container{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	&__category{
+		text-decoration: none;
+		height: 2rem;
+		width: 20%;
+		background-image: url('../../assets/electronics.jpeg');
+		background-size: cover;
+		background-position: center;
+		font-weight: 600;
+		color: $white;
+		text-align: center;
+		padding: 0.5rem 0;
+		border: none;
+		border-radius: 0.5rem;
+		@include tablet{
+			background-size: cover;
+			height: 3rem;
+			max-width: 12rem;
+			padding: 1rem;
+		}
+		&--one{
+			background-image: url('../../assets/clothing.jpeg');
+			background-size: cover;
+		}
+		&--two{
+			background-image: url('../../assets/general.jpeg');
+			background-size: cover;
+		}
+		&--three{
+			background-image: url('../../assets/plants.jpeg');
+			background-size: cover;
+			background-position: center -1rem;
+		}
+
+	}
+	&__controls{
+		flex-grow: 1;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		height: 3rem;
+		width: 100%;
+		pointer-events: none;
+	}
+	&__next{
+		cursor: pointer;
+		color: $mint;
+		pointer-events: all;
+		font-size: 3rem;
+		&:hover{
+			color: $dark-navy;
+		}
+		&--hidden{
+			visibility: hidden;
+			pointer-events: none;
+		}
+	}
+	&__prev{
+		cursor: pointer;
+		color: $mint;
+		pointer-events: all;
+		font-size: 3rem;
+		&:hover{
+			color: $dark-navy;
+		}
+		&--hidden{
+			visibility: hidden;
+			pointer-events: none;
+		}
+	}
+	&__text-container{
+		padding: 0 1rem;
+		flex-grow:1;
+		justify-self: flex-end;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-start;
+		margin-bottom:1.25rem;
+	}
+
+	&__title{
+		color: $white;
+		margin: 0;
+	}
+
+	&__price{
+		color: $white;
+		margin: 0;
+	}
+}
+

@@ -10,7 +10,7 @@ const BackgroundAnimation = (props) =>{
 				x:{
 					//repeat:Infinity,
 					//reapeatType:"loop",
-					duration: 6,
+					duration: 8,
 					ease: "linear",
 				},
 			},

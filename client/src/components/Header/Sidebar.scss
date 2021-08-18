@@ -3,7 +3,7 @@
 @use '../../partials/globals';
 
 .sidebar{
-	pointer-events: none;
+	pointer-events: all;
 	position:fixed;
 	top: 0;
 	width: 100vw;
@@ -15,9 +15,11 @@
 	&--closed{ 
 		visibility: hidden;
 		background-color: transparent;
+		pointer-events: none;
 	}
 	@include desktop{
-		z-index: -1;
+		pointer-events: none;
+		z-index: 0;
 		background-color: initial;
 		height:auto;
 		width: 100%;
@@ -42,6 +44,7 @@
 			transform: translateX(100%);
 			@include desktop{
 				transform: translateY(-10rem);
+				opacity: 0;
 				
 			}
 		}
