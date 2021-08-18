@@ -14,6 +14,12 @@ class MainPage extends React.Component{
 	
 
 	}
+	componentDidMount = () =>{
+		this.setState({index: this.getIndex()})
+	}
+	getIndex = () =>{
+		return Math.floor(this.state.heroObj.length / 2)
+	}
 
 	handleSlideLeft = () =>{
 		if(this.state.index > -1){
