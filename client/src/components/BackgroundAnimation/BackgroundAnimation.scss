@@ -13,6 +13,8 @@ body{
 	flex-wrap: nowrap;
 	justify-content: center;
 	overflow: auto;
+	-ms-overflow-style: none; /* for Internet Explorer, Edge */
+	scrollbar-width: none; /* for Firefox */
 	&::-webkit-scrollbar{
 		display:none;
 	}

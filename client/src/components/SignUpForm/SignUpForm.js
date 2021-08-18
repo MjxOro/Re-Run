@@ -35,7 +35,7 @@ const SignUpForm = () =>{
 					<label className='signup__label'>Email</label>
 					<input name='email' className='signup__input' placeholder='Jeff@apple.com'/>
 					<label className='signup__label'>Password</label>
-					<input name='password' className='signup__input' placeholder='Choose a strong password'/>
+					<input name='password' type='password' className='signup__input' placeholder='Choose a strong password'/>
 					<button className='signup__button'>Create Account</button>
 					<div className='signup__login-container'>
 						<p className='signup__text'>Already have an account? </p>
