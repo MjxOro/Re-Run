@@ -3,13 +3,13 @@
 @use '../../partials/globals';
 
 .hero{
-	overflow: hidden;
 	&__container{
 		pointer-events: none;
 		margin: 0;
 		height: 28rem;
 		background-color: rgb(0,0,0,0.25);
 		box-sizing: border-box;
+		object-fit: cover;
 		overflow: hidden;
 		@include tablet{
 			height: 35rem;
@@ -21,19 +21,24 @@
 	&__img{
 		cursor: pointer;
 		pointer-events: all;
+		transition: all 500ms ease-in-out;
 		width: 100vw;
 		height: 28rem;
-		z-index: -2;
+		z-index: -1;
 		display: flex;
-		object-fit: cover;
+
+		//object-fit: cover;
 		@include tablet{
 			height: 35rem;
 			max-width: 100%;
 		}
 		@include desktop{
-			max-width: 1280px;
+			max-width: 1440px;
 			height: 50rem;
 			margin: 0 auto;
+		}
+		&:hover{
+			transform: scale(1.5);
 		}
 	}
 	&__searchbar{ //DONE
@@ -42,7 +47,7 @@
 		align-items: center;
 		position: absolute;
 		justify-content: center;
-		z-index: 1;
+		z-index: 2;
 		top: 5rem;
 		pointer-events: none;
 		@include tablet{
@@ -97,7 +102,6 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		z-index:0;
 		@include tablet{
 			top: 13rem;
 		}
@@ -160,8 +164,6 @@
 		}
 		@include desktop{
 			top: 30rem;
-		}
-		@include desktop-break{
 			justify-content: center;
 		}
 	}
@@ -170,7 +172,7 @@
 		cursor: pointer;
 		color: $mint;
 		font-size: 3rem;
-		@include desktop-break{
+		@include desktop{
 			margin-left: 1440px;
 		}
 		&:hover{
@@ -207,12 +209,10 @@
 		justify-content: center;
 		align-items: center;
 		margin-bottom:1.25rem;
-		@include tablet{
-			top: 38rem;
-		}
-		@include desktop{
-			top: 50rem;
-		}
+		visibility: hidden;
+	}
+	.hero__image:hover + .hero__text-container{
+		visibility: show;
 	}
 
 	&__title{

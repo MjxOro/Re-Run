@@ -27,7 +27,7 @@ class Header extends react.Component {
 		return(
 			<header className='hd'>
 				<div className='hd__container'>
-					<a className='hd__logo' />
+					<Link to='/home' className='hd__logo' />
 					<nav className='hd__left-container'>
 						<nav className='hd__desktop-nav'>
 							<Link to='/' className='hd__link'>Home</Link>

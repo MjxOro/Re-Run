@@ -26,13 +26,11 @@ class MainPage extends React.Component{
 			this.setState({index: this.state.index - 1})
 		}
 
-		console.log(this.state.index)
 	}
 	handleSlideRight = () =>{
 		if(this.state.index < this.state.heroObj.length){
 			this.setState({index: this.state.index + 1})
 		}
-		console.log(this.state.index)
 
 	}
 

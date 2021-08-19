@@ -1,0 +1,121 @@
+@use '../../partials/vairables' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals';
+
+.post{
+	overflow: hidden;
+	&__main-container{
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+		box-sizing: border-box;
+		width: 100%;
+
+	}
+	&__top{
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		height: inherit;
+
+	}
+	&__img{
+		z-index: -1;
+		width: 100vw;
+		height: 15rem;
+		object-fit: cover;
+		@include tablet{
+			height: 28rem;
+		}
+		@include desktop{
+			height: 40rem;
+			max-width: 1280px;
+		}
+	}
+	
+	&__form{
+	}
+	&__controls{
+		position: absolute;
+		z-index: 2;
+		top: 10rem;
+		pointer-events: none;
+		flex-grow: 1;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		height: 3rem;
+		width: 100%;
+		pointer-events: none;
+		@include tablet{
+			top: 25rem;
+		}
+		@include desktop{
+			top: 30rem;
+		}
+		@include desktop-break{
+			justify-content: center;
+		}
+	}
+	&__next{
+		pointer-events: all;
+		cursor: pointer;
+		color: $mint;
+		font-size: 3rem;
+		@include desktop-break{
+			margin-left: 1440px;
+		}
+		&:hover{
+			color: $dark-navy;
+		}
+		&--hidden{
+			visibility: hidden;
+			pointer-events: none;
+		}
+	}
+	&__prev{
+		cursor: pointer;
+		color: $mint;
+		pointer-events: all;
+		font-size: 3rem;
+		&:hover{
+			color: $dark-navy;
+		}
+		&--hidden{
+			visibility: hidden;
+			pointer-events: none;
+		}
+	}
+	&__text-container{
+		pointer-events: none;
+		position:absolute;
+		width: 100%;
+		top: 30rem;
+		padding: 0 1rem;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-bottom:1.25rem;
+		@include tablet{
+			top: 38rem;
+		}
+		@include desktop{
+			top: 50rem;
+		}
+	}
+
+	&__title{
+		color: $white;
+		margin: 0;
+	}
+
+	&__price{
+		color: $white;
+		margin: 0;
+	}
+}
+
+
