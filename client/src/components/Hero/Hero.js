@@ -36,7 +36,7 @@ const Hero = (props) =>{
 				</motion.div>
 				<motion.div exit={{opacity:0}} transition={transition} className='hero__controls'>
 					<FaAngleLeft onClick={props.slideLeft} className={index !== 0 ? 'hero__prev' : 'hero__prev hero__prev--hidden'}/>
-					<FaAngleRight onClick={props.slideRight} className={index !== props.data.length-1 ? 'hero__next' : 'hero__next--hidden'}/>
+					<FaAngleRight onClick={props.slideRight} className={index !== props.data.length-1 ? 'hero__next' : 'hero__next hero__next--hidden'}/>
 				</motion.div>
 				<motion.div exit={{opacity:0}} transition={transition} className='hero__text-container'>
 					<p className='hero__title'>{props.data[index].title}</p>

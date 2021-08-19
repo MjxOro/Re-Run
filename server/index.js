@@ -22,7 +22,7 @@ app.use('/users',userRoutes)
 
 
 //connet to DB
-mongoose.connect('mongodb://127.0.0.1:27017/test_db',{useNewUrlParser: true,useUnifiedTopology: true},() =>{
+mongoose.connect('mongodb://127.0.0.1:27017/test',{useNewUrlParser: true,useUnifiedTopology: true},() =>{
 	console.log('connected to DB')
 })
 app.listen(PORT,(req,res)=>{

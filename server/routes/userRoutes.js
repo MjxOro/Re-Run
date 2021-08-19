@@ -14,7 +14,7 @@ router.post("/register",(req,res)=>{
 		.save()
 		.then((user)=>{
 			const token = jwt.sign(
-				{ id: user.id, email: user.email },
+				{ id: user._id, email: user.email },
 				process.env.JWT_SECRET,
 				{ expiresIn: "24h" }
 			)
@@ -28,35 +28,34 @@ router.post("/register",(req,res)=>{
 
 	//Login user
 router.post("/login", async(req,res)=>{
-	User.where({ email: req.body.email })
-	console.log(req.body)
-	.fetch()
+	User.find({ email: req.body.email })
 	.then((user) =>{
 		const isMatch = bcrypt.compareSync(
 			req.body.password,
-			user.attributes.password
+			user[0].password
 		)
 		if(!isMatch){
 			return res.status(400).json({ error: "Invalid credentials." })
 		}
 
 		const token = jwt.sign(
-			{ id: user.id, email: user.email },
+			{ id: user[0]._id , email: user[0].email },
 			process.env.JWT_SECRET,
 			{ expiresIn: "24h" }
 		)
 		res.status(201).json({ user, token })
 	})
 	.catch((err)=>{
+		console.log('BRUH')
 		res.status(400).json({ error: err.message })
 	})
 })
 
 //Get Current User
 router.get("/current", authorize, (req, res) => {
-	User.where({ id: req.decoded.id }) //Query for db
-		.fetch()
+	User.find({ id: req.decoded.id }) //Query for db
 		.then((user) => {
+			console.log(user)
 			const currentUser = { ...user, password: null };
 			AdPost.where({ user_id: currentUser.id }) //Query for bd
 				.fetchAll()
