@@ -1,11 +1,7 @@
 const mongoose = require('mongoose')
-const { v4: uuidv4 } = require("uuid")
+const mongo = require('mongodb')
 
 const UserSchema = mongoose.Schema({
-	_id:{
-		type: String,
-		default: uuidv4(),
-	},
 	timeCreated:{
 		type: Date,
 		default: Date.now(),
@@ -22,6 +18,10 @@ const UserSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	profilePicture: {
+		type: String,
+		default: "",
+	}
 
 })
 

@@ -19,10 +19,10 @@ const Sidebar = (props) => {
 						<Link className='sidebar__link'>Profile</Link>
 						<Link className='sidebar__link'>Edit posts</Link>
 						<Link className='sidebar__link'>Delete posts</Link>
-						<Link to='/login' onClick={props.handleLogout} className='sidebar__link'>
-							<FiLogOut className='sidebar__logout'/>
-							<p className='sidebar__logout-text'>Logout</p>
-						</Link>
+						<div className='sidebar__link'>
+							<FiLogOut onClick={props.handleLogout} className='sidebar__logout'/>
+							<p onClick={props.handleLogout} className='sidebar__logout-text'>Logout</p>
+						</div>
 					</div>
 				</nav>
 		</section>
@@ -30,7 +30,7 @@ const Sidebar = (props) => {
 			<section className='sidebar sidebar--closed' hidden>
 				<nav className='sidebar__nav sidebar__nav--closed'>
 					<div className='sidebar__close-container'>
-						<h2 className='sidebar__greeting'>Hello! {'USERNAME'}</h2>
+						<h2 className='sidebar__greeting'>Hello! {props.currentUser.username}</h2>
 						<CloseButton onClick={props.close} className='sidebar__close-icon'/>
 					</div>
 					<div className='sidebar__link-container'>
@@ -40,10 +40,10 @@ const Sidebar = (props) => {
 						<Link className='sidebar__link'>Profile</Link>
 						<Link className='sidebar__link'>Edit posts</Link>
 						<Link className='sidebar__link'>Delete posts</Link>
-						<Link to='/login' onClick={props.handleLogout} className='sidebar__link'>
+						<div className='sidebar__link'>
 							<FiLogOut className='sidebar__logout'/>
 							<p className='sidebar__logout-text'>Logout</p>
-						</Link>
+						</div>
 					</div>
 				</nav>
 		</section>

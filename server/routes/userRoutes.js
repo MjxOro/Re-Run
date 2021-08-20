@@ -69,4 +69,22 @@ router.get("/current", authorize, (req, res) => {
 		});
 });
 
+router.put("/upload", (req,res) =>{
+	let profilePicture = req.files.profilePicture
+	let uploadPath = __dirname + "/upload/" + profilePicture.name
+
+	if(!req.files||Object.keys(req.files).length === 0){
+		return res.status(400).json({message: "No files were uploaded"})
+	}
+
+	profilePicture.mv(uploadPath, function(err){
+		if(err){
+			return res.status(500).send(err)
+		}
+		res.send("File Uploaded!")
+	})
+	
+
+
+})
 module.exports = router;

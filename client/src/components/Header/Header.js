@@ -42,9 +42,10 @@ class Header extends react.Component {
 				
 	}
 	handleLogout = () => {
-		console.log(this.props.history)
-		sessionStorage.removeItem("token")
 		this.props.history.push("/login")
+		setTimeout(()=>{
+			sessionStorage.removeItem("token")
+		},2300)
 
   }
 
