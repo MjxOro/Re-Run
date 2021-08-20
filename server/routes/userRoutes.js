@@ -14,7 +14,7 @@ router.post("/register",(req,res)=>{
 		.save()
 		.then((user)=>{
 			const token = jwt.sign(
-				{ id: user._id, email: user.email },
+				{ id: user.id, email: user.email },
 				process.env.JWT_SECRET,
 				{ expiresIn: "24h" }
 			)
@@ -39,29 +39,30 @@ router.post("/login", async(req,res)=>{
 		}
 
 		const token = jwt.sign(
-			{ id: user[0]._id , email: user[0].email },
+			{ id: user[0].id , email: user[0].email },
 			process.env.JWT_SECRET,
 			{ expiresIn: "24h" }
 		)
 		res.status(201).json({ user, token })
+		console.log(token)
 	})
 	.catch((err)=>{
-		console.log('BRUH')
 		res.status(400).json({ error: err.message })
 	})
 })
 
 //Get Current User
 router.get("/current", authorize, (req, res) => {
-	User.find({ id: req.decoded.id }) //Query for db
+	User.find({_id: req.decoded.id }) //Query for db
 		.then((user) => {
-			console.log(user)
-			const currentUser = { ...user, password: null };
-			AdPost.where({ user_id: currentUser.id }) //Query for bd
-				.fetchAll()
-				.then((adPosts) => {
-					res.status(200).json({ currentUser, adPosts });
-				});
+			user[0].password = null
+			currentUser = user[0]
+
+
+
+
+
+			res.status(200).json({currentUser});
 		})
 		.catch((err) => {
 			res.status(500).json({ error: err.message });

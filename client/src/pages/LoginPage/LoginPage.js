@@ -11,6 +11,7 @@ class LoginPage extends React.Component{
 	}
 	componentDidMount = () =>{
 		this.setState({formImg: Math.floor(Math.random() * 3 + 1)})
+		console.log(process.env.REACT_APP_API_URL)
 	}
 	handleChange = (e) =>{
 		this.setState({ userInfo:{ ...this.state.userInfo, [e.target.name]: e.target.value }})
@@ -32,8 +33,7 @@ class LoginPage extends React.Component{
 			}
 		}
 		else{
-			const url = 'http://localhost:8080/users/login' //Put on .env file
-			axios.post(url,this.state.userInfo)
+			axios.post(process.env.REACT_APP_API_URL +'/users/login',this.state.userInfo)
 			.then(res =>{
 				sessionStorage.setItem("token", res.data.token)
 				this.props.history.push("/")

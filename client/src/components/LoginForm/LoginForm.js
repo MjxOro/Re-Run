@@ -22,8 +22,8 @@ const LoginForm = (props) =>{
 			return(<figure className='login__art-container' />)
 		}
 	}
-	function errorLabel(){
-		if(props.error.email){
+	function errorLabel(err){
+		if(err){
 			return(
 				<label className='signup__error'>Field is required</label>
 			)
@@ -48,11 +48,11 @@ const LoginForm = (props) =>{
 					</div>
 					<label className='login__label'>Email</label>
 					<input onChange={props.handleChange} name='email' className={props.error.email || props.error.valid ? 'login__input login__input--error' : 'login__input'} placeholder='Jeff@apple.com'/>
-					{errorLabel()}
+					{errorLabel(props.error.email)}
 
 					<label className='login__label'>Password</label>
-					<input onChange={props.handleChange} name='password' type='password' className={props.error.email || props.error.valid ? 'login__input login__input--error' : 'login__input'} placeholder='Choose a strong password'/>
-					{errorLabel()}
+					<input onChange={props.handleChange} name='password' type='password' className={props.error.password || props.error.valid ? 'login__input login__input--error' : 'login__input'} placeholder='Choose a strong password'/>
+					{errorLabel(props.error.password)}
 					<button  className='login__button'>Log in</button>
 					<div className='login__login-container'>
 						<p className='login__text'>Dont have an account? </p>

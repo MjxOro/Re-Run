@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../../components/Header/Header'
 import jsonData from '../../cardData.json'
 import Post from '../../components/Post/Post'
-import LoginForm from '../../components/LoginForm/LoginForm'
+import SimpleMap from '../../components/Maps/Maps'
 
 class PostPage extends React.Component{
 	state = {
@@ -16,6 +16,7 @@ class PostPage extends React.Component{
 	}
 	componentDidMount = () =>{
 		this.setState({index: this.props.match.params.id-1})
+		window.scrollTo(0,0)
 	}
 
 	render = () =>{
@@ -23,6 +24,7 @@ class PostPage extends React.Component{
 			<>
 				<Header />
 				<Post data={this.state.heroObj} index={this.state.index} />
+				<SimpleMap/>
 			</>
 		)
 	}

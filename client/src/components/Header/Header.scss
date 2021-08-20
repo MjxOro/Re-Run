@@ -30,7 +30,6 @@
 		@include desktop{
 			display: flex;
 			align-items: center;
-			margin-right: 3rem;
 
 		}
 	}
@@ -60,6 +59,22 @@
 		flex-direction: row;
 		align-items: center;
 	}
+	&__add{
+		height: 2rem;
+		width: 2rem;
+		color: $mint;
+		margin-right: 1rem;
+		@include tablet{
+			height: 3rem;
+			width: 3rem;
+			margin-right: 2rem;
+		}
+		@include desktop{
+			height: 3rem;
+			width: 3rem;
+			margin-right: 3rem;
+		}
+	}
 	&__profile-tab{
 		display:flex;
 		align-items: center;
@@ -80,6 +95,7 @@
 		@include tablet{
 			height: 3rem;
 			width: 3rem;
+			margin-right: 2rem;
 		}
 		@include desktop{
 			margin-right: 0.25rem;
@@ -108,6 +124,7 @@
 		}
 	}
 	&__burger{
+		cursor: pointer;
 		transform: scale( 1.25, 1.5);
 		border-radius: 0.25rem;
 		background-color: $white;

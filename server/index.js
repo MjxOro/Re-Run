@@ -10,8 +10,8 @@ const adPostRoutes = require('./routes/adPostRoutes')
 const AdPost = require('./models/adPosts')
 
 
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
 app.use(morgan('dev'))
 app.use('/users',userRoutes)
 
@@ -22,7 +22,7 @@ app.use('/users',userRoutes)
 
 
 //connet to DB
-mongoose.connect('mongodb://127.0.0.1:27017/test',{useNewUrlParser: true,useUnifiedTopology: true},() =>{
+mongoose.connect(process.env.MONGODB_URL,{useNewUrlParser: true,useUnifiedTopology: true},() =>{
 	console.log('connected to DB')
 })
 app.listen(PORT,(req,res)=>{
