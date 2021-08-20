@@ -19,13 +19,15 @@
 		flex-direction: column;
 		justify-content: space-around;
 		align-items: center;
+		padding: 0 1rem;
 		@include tablet{
 			display:grid;
 			grid-template-columns: repeat(3,min-content);
-			grid-gap: 2rem;
+			grid-gap: 1.5rem;
+			padding: 0 1rem;
 		}
 		@include desktop{
-			grid-template-columns: repeat(5,min-content);
+			grid-template-columns: repeat(4,min-content);
 			grid-gap: 2rem;
 		}
 
@@ -34,7 +36,7 @@
 		border: 1px solid $light-mint;
 		border-radius: 0.5rem;
 		box-shadow: 0 4px 12px 4px rgba(255,255,255,.2);
-		width: 50%;
+		width: 75%;
 		max-width: 18rem;
 		display:flex;
 		flex-direction: column;
@@ -44,7 +46,7 @@
 		overflow: hidden;
 		box-sizing: border-box;
 		@include tablet{
-			min-width: 17rem;
+			min-width: 15rem;
 			max-height: 26rem;
 		}
 	}
@@ -60,7 +62,7 @@
 		transition: all 500ms ease-in-out;
 		overflow: hidden;
 		&:hover{
-			transform: scale(1.5);
+			transform: scale(1.1);
 
 		}
 	}

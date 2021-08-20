@@ -7,9 +7,8 @@ const LoginForm = (props) =>{
 
 	const history = useHistory()
 	function random (){
-		const random = Math.floor(Math.random()*3 + 1)
 
-		switch (random){
+		switch (props.random){
 			case 1:
 			return(<figure className='login__art-container' />)
 			break;
@@ -22,26 +21,38 @@ const LoginForm = (props) =>{
 			default:
 			return(<figure className='login__art-container' />)
 		}
-
 	}
-	function handleSubmit(e){
-		e.preventDefault()
-		if(e.target.email.value && e.target.password.value){
-			history.push('/home')
+	function errorLabel(err){
+		if(err){
+			return(
+				<label className='signup__error'>Field is required</label>
+			)
 		}
-
+		else if(props.error.valid){
+			return(
+				<label className='signup__error'>Email and/or password is incorrect</label>
+			)
+		}
+		else{
+			return(
+				<label className='signup__error signup__error--hidden' />
+			)
+		}
 	}
 	return(
 		<section className='login'>
-			<form onSubmit={handleSubmit} className='login__form'>
+			<form onSubmit={props.handleLogin} className='login__form'>
 				<main className='login__left'>
 					<h1 className='login__title'>Log in</h1>
 					<div className='login__Oauth'>
 					</div>
 					<label className='login__label'>Email</label>
-					<input name='email' className='login__input' placeholder='Jeff@apple.com'/>
+					<input onChange={props.handleChange} name='email' className={props.error.email || props.error.valid ? 'login__input login__input--error' : 'login__input'} placeholder='Jeff@apple.com'/>
+					{errorLabel(props.error.email)}
+
 					<label className='login__label'>Password</label>
-					<input name='password' type='password' className='login__input' placeholder='Choose a strong password'/>
+					<input onChange={props.handleChange} name='password' type='password' className={props.error.password || props.error.valid ? 'login__input login__input--error' : 'login__input'} placeholder='Choose a strong password'/>
+					{errorLabel(props.error.password)}
 					<button  className='login__button'>Log in</button>
 					<div className='login__login-container'>
 						<p className='login__text'>Dont have an account? </p>

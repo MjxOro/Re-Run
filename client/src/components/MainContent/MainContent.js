@@ -1,30 +1,37 @@
 import './MainContent.scss'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const MainContent = (props) =>{
 
-	const cards = (apiData,direction) =>{
-		return (
-			<motion.div animate="animate" className='main__card'>
-				<figure className='main__img-container'>
-					<img src={apiData.image} className='main__image' />
-				</figure>
-				<div className='main__text-container'>
-					<p className='main__title'>{apiData.title}</p>
-					<p className='main__price'>{apiData.price}</p>
-				</div>
-			</motion.div>
-		)
-	}
+	const transition = { duration: 0.6, ease:[0.43,0.13,0.23,0.96]}
+
 	return(
-		<main className='main'>
+		<motion.main exit={{opacity: 0}} transition={transition} className='main'>
 			<h1 className='main__h1'>What Other People are Selling</h1>
 			<div className='main__grid'>
-				{props.data.map(card => cards(card))}
+		{props.data.map(card =>(
+			<Link to={'/post/' + card.id} className ='main__card-link'>
+				<motion.div  className='main__card'
+				whileHover={{scale:1.1}}
+				transition={transition}
+				>
+					<figure className='main__img-container'>
+						<img src={card.image} className='main__image' />
+					</figure>
+					<div className='main__text-container'>
+						<p className='main__title'>{card.title}</p>
+						<p className='main__price'>{card.price}</p>
+					</div>
+				</motion.div>
+			</Link>
+
+		))}
+				 
 			</div>
-		</main>
+		</motion.main>
 
 	)
 }
 
-export default MainContent;
+export default MainContent

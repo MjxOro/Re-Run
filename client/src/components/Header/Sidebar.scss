@@ -5,13 +5,12 @@
 .sidebar{
 	pointer-events: all;
 	position:fixed;
-	z-index: 3;
+	z-index: 4;
 	top: 0;
 	width: 100vw;
 	height: 100vh;
 	background-color: rgb(0, 0, 0, 0.3);
 	display:flex;
-
 	justify-content: flex-end;
 	&--closed{ 
 		visibility: hidden;
@@ -20,7 +19,6 @@
 	}
 	@include desktop{
 		pointer-events: none;
-		z-index: 0;
 		background-color: initial;
 		height:auto;
 		width: 100%;
@@ -53,9 +51,10 @@
 
 	&__close-container{
 		display: flex;
-		justify-content: flex-end;
+		justify-content: space-between;
 		background-color: $mint;
-		height: 4rem;
+		height: 5rem;
+		padding: 1rem;
 	}
 	&__greeting{
 		margin: 0;
@@ -78,9 +77,59 @@
 	&__link-container{
 		display: flex;
 		flex-direction: column;
+		height: 100%;
 	}
 	&__link{
+		content: "TEST";
+		padding: 0.75rem 0;
+		text-align: center;
+		width: 100%;
 		color: $white;
+		height: 3rem;
 		border-bottom: 1px solid $white;
+		&:nth-child(5){
+			@include desktop{
+				display:none;
+			}
+		}
+		&:nth-child(6){
+			@include desktop{
+				display:none;
+			}
+		}
+		&:last-child{
+			flex-grow:1;
+			height: 100%;
+			display: flex;
+			align-items: flex-end;
+			justify-content: flex-end;
+			padding: 1rem 1rem;
+			@include desktop{
+				height: 3rem;
+			}
+		}
+	}
+	&__logout{
+		color: $light-mint;
+		height: 2rem;
+		width: 2rem;
+		@include tablet{
+			height: 3rem;
+			width: 3rem;
+		}
+		@include desktop{
+			display:none;
+		}
+	}
+	&__logout-text{
+		width: 100%;
+		margin: 0;
+		display:none;
+		text-align: center;
+		@include desktop{
+			display: flex;
+			justify-content: center;
+		}
+
 	}
 }

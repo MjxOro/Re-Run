@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header'
 import Hero from '../../components/Hero/Hero'
 import jsonData from '../../cardData.json'
 import MainContent from '../../components/MainContent/MainContent'
+import { Route } from 'react-router-dom'
 
 class MainPage extends React.Component{
 	state = {
@@ -26,20 +27,18 @@ class MainPage extends React.Component{
 			this.setState({index: this.state.index - 1})
 		}
 
-		console.log(this.state.index)
 	}
 	handleSlideRight = () =>{
 		if(this.state.index < this.state.heroObj.length){
 			this.setState({index: this.state.index + 1})
 		}
-		console.log(this.state.index)
 
 	}
 
 	render = () =>{
 		return(
 			<>
-				<Header />
+				<Route component={Header}/>
 				<Hero data={this.state.heroObj} index={this.state.index} slideRight={this.handleSlideRight} slideLeft={this.handleSlideLeft}/>
 				<MainContent data={this.state.heroObj} />
 			</>

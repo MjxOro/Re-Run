@@ -1,14 +1,12 @@
 
 import { Link } from 'react-router-dom'
 import './SignUpForm.scss'
-import art from '../../assets/formImage3.jpeg'
 
-const SignUpForm = () =>{
+const SignUpForm = (props) =>{
 
 	function random (){
-		const random = Math.floor(Math.random()*3 + 1)
 
-		switch (random){
+		switch (props.rng){
 			case 1:
 			return(<figure className='signup__art-container' />)
 			break;
@@ -23,19 +21,44 @@ const SignUpForm = () =>{
 		}
 
 	}
+	function emailLabel(){
+		if(props.error.email || props.error.validEmail){
+			if(props.error.email){
+				return(
+					<label className='signup__error'>Field is required</label>
+				)
+			}
+			else if(props.error.validEmail){
+				return(
+					<label className='signup__error'>Enter a valid email</label>
+				)
+			}
+		}
+		else{
+			return(
+				<label className='signup__error signup__error--hidden' />
+			)
+		}
+	}
 	return(
 		<section className='signup'>
-			<form className='signup__form'>
+			<form onSubmit={props.handleSignUp} className='signup__form'>
 				<main className='signup__left'>
 					<h1 className='signup__title'>Sign Up</h1>
 					<div className='signup__Oauth'>
 					</div>
 					<label className='signup__label'>Username</label>
-					<input name='username' className='signup__input' placeholder='Username'/>
+					<input onChange={props.handleChange} name='username' className={props.error.username ? 'signup__input signup__input--error' : 'signup__input'} placeholder='Username'/>
+					<label className={props.error.username ? 'signup__error' : 'signup__error--hidden'}>Field is required</label>
+
 					<label className='signup__label'>Email</label>
-					<input name='email' className='signup__input' placeholder='Jeff@apple.com'/>
+					<input onChange={props.handleChange} name='email' className={props.error.email || props.error.validEmail ? 'signup__input signup__input--error' : 'signup__input'} placeholder='Jeff@apple.com'/>
+					{emailLabel()}
+
+
 					<label className='signup__label'>Password</label>
-					<input name='password' type='password' className='signup__input' placeholder='Choose a strong password'/>
+					<input onChange={props.handleChange} name='password' type='password' className={props.error.password ? 'signup__input signup__input--error' : 'signup__input'} placeholder='Choose a strong password'/>
+					<label className={props.error.password ? 'signup__error' : 'signup__error--hidden'}>Field is required</label>
 					<button className='signup__button'>Create Account</button>
 					<div className='signup__login-container'>
 						<p className='signup__text'>Already have an account? </p>
