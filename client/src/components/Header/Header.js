@@ -40,8 +40,7 @@ class Header extends react.Component {
 					<nav className='hd__left-container'>
 						<nav className='hd__desktop-nav'>
 							<Link to='/' className='hd__link'>Home</Link>
-							<Link to='/' className='hd__link'>Edit posts</Link>
-							<Link to='/' className='hd__link'>Delete posts</Link>
+							<Link to='/mypostings' className='hd__link'>My Postings</Link>
 							<Link to='/' className='hd__link'>Points</Link>
 						</nav>
 						<Link to='/add/posts'>

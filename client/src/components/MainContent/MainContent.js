@@ -16,9 +16,7 @@ const MainContent = (props) =>{
 				whileHover={{scale:1.1}}
 				transition={transition}
 				>
-					<figure className='main__img-container'>
-						<img src={card.image} className='main__image' />
-					</figure>
+					<img src={card.image} className='main__img' />
 					<div className='main__text-container'>
 						<p className='main__title'>{card.title}</p>
 						<p className='main__price'>{card.price}</p>

@@ -80,7 +80,6 @@
 		height: 100%;
 	}
 	&__link{
-		content: "TEST";
 		padding: 0.75rem 0;
 		text-align: center;
 		width: 100%;
@@ -88,11 +87,6 @@
 		height: 3rem;
 		border-bottom: 1px solid $white;
 		&:nth-child(5){
-			@include desktop{
-				display:none;
-			}
-		}
-		&:nth-child(6){
 			@include desktop{
 				display:none;
 			}
