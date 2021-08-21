@@ -1,0 +1,228 @@
+@use '../../partials/vairables' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals';
+
+.hero{
+	&__container{
+		pointer-events: none;
+		margin: 0;
+		height: 28rem;
+		background-color: rgb(0,0,0,0.25);
+		box-sizing: border-box;
+		object-fit: cover;
+		overflow: hidden;
+		@include tablet{
+			height: 35rem;
+		}
+		@include desktop{
+			height: 50rem;
+		}
+	}
+	&__img{
+		cursor: pointer;
+		pointer-events: all;
+		transition: all 500ms ease-in-out;
+		width: 100vw;
+		height: 28rem;
+		z-index: -1;
+		display: flex;
+
+		//object-fit: cover;
+		@include tablet{
+			height: 35rem;
+			max-width: 100%;
+		}
+		@include desktop{
+			max-width: 1440px;
+			height: 50rem;
+			margin: 0 auto;
+		}
+		&:hover{
+			transform: scale(1.5);
+		}
+	}
+	&__searchbar{ //DONE
+		width: 100vw;
+		display: flex;
+		align-items: center;
+		position: absolute;
+		justify-content: center;
+		z-index: 2;
+		top: 5rem;
+		pointer-events: none;
+		@include tablet{
+			top: 8rem;
+		}
+	}
+	&__search{ //DONE
+		pointer-events: all;
+		outline: none;
+		width: 50%;
+		max-width: 475px;
+		height: 2rem;
+		align-self: center;
+		margin: 1rem 0;
+		border-radius: 1rem 0 0 1rem;
+		border: 2px solid grey;
+		border-right: none;
+		padding: 0 1rem;
+		&:focus{
+			outline:none;
+			border: 2px solid $light-mint;
+			border-right: none;
+		}
+		@include tablet{
+			height: 3rem;
+			max-width: 1080px;
+		}
+	}
+	&__btn{ //DONE
+		pointer-events: all;
+		outline: none;
+		cursor: pointer;
+		height: 2rem;
+		width: 1.75rem;
+		padding: 0.25rem;
+		border: 2px solid $light-mint;
+		border-left: none;
+		background-color: $light-mint;
+		border-radius: 0 1rem 1rem 0;
+		@include tablet{
+			padding: 0.75rem;
+			height: 2.8rem;
+			width: 2.8rem;
+		}
+	}
+
+	&__category-container{ 
+		position: absolute;
+		width: 100vw;
+		top: 9rem;
+		pointer-events: none;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		@include tablet{
+			top: 13rem;
+		}
+		@include desktop{
+			justify-content: center;
+		}
+	}
+	&__category{
+		pointer-events: all;
+		text-decoration: none;
+		height: 2rem;
+		width: 20%;
+		background-image: url('../../assets/electronics.jpeg');
+		background-size: cover;
+		background-position: center;
+		font-weight: 600;
+		color: $white;
+		text-align: center;
+		padding: 0.5rem 0;
+		border: none;
+		border-radius: 0.5rem;
+		@include tablet{
+			background-size: cover;
+			height: 3rem;
+			max-width: 12rem;
+			padding: 1rem;
+		}
+		@include desktop{
+			margin: 0 1rem;
+		}
+		&--one{
+			background-image: url('../../assets/clothing.jpeg');
+			background-size: cover;
+		}
+		&--two{
+			background-image: url('../../assets/general.jpeg');
+			background-size: cover;
+		}
+		&--three{
+			background-image: url('../../assets/plants.jpeg');
+			background-size: cover;
+			background-position: center -1rem;
+		}
+
+	}
+	&__controls{
+		position: absolute;
+		z-index: 2;
+		top: 15rem;
+		pointer-events: none;
+		flex-grow: 1;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		height: 3rem;
+		width: 100%;
+		pointer-events: none;
+		@include tablet{
+			top: 25rem;
+		}
+		@include desktop{
+			top: 30rem;
+			justify-content: center;
+		}
+	}
+	&__next{
+		pointer-events: all;
+		cursor: pointer;
+		color: $mint;
+		font-size: 3rem;
+		@include desktop{
+			margin-left: 1440px;
+		}
+		&:hover{
+			color: $dark-navy;
+		}
+		&--hidden{
+			visibility: hidden;
+			pointer-events: none;
+		}
+	}
+	&__prev{
+		cursor: pointer;
+		color: $mint;
+		pointer-events: all;
+		font-size: 3rem;
+		&:hover{
+			color: $dark-navy;
+		}
+		&--hidden{
+			visibility: hidden;
+			pointer-events: none;
+		}
+	}
+	&__text-container{
+		background-color: rgb(0,0,0,0.25);
+		pointer-events: none;
+		position:absolute;
+		width: 100%;
+		top: 30rem;
+		padding: 0 1rem;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-bottom:1.25rem;
+		visibility: hidden;
+	}
+	.hero__image:hover + .hero__text-container{
+		visibility: show;
+	}
+
+	&__title{
+		color: $white;
+		margin: 0;
+	}
+
+	&__price{
+		color: $white;
+		margin: 0;
+	}
+}
+

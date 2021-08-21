@@ -1,0 +1,69 @@
+@use '../../partials/vairables' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals';
+
+body{
+	background-color: $dark-navy;
+}
+
+.banimation{
+	padding: 1rem 0;
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	overflow: auto;
+	-ms-overflow-style: none; /* for Internet Explorer, Edge */
+	scrollbar-width: none; /* for Firefox */
+	&::-webkit-scrollbar{
+		display:none;
+	}
+	&__card{
+		margin: 0 1rem;
+		border: 1px solid $light-mint;
+		border-radius: 0.5rem;
+		box-shadow: 0 4px 12px 4px rgba(255,255,255,.2);
+		min-width: 12rem;
+		max-height: 15rem;
+		display:flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		color: $white;
+		@include tablet{
+			min-width: 17rem;
+			max-height: 26rem;
+		}
+		&:first-child{
+			margin-left: 5rem;
+		}
+	}
+	&__image{
+		border-radius: 0.5rem 0.5rem 0rem 0rem;
+		object-fit: cover;
+		height: 70%;
+		width: inherit;
+	}
+	&__text-container{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 0.5rem;
+	}
+	&__title{
+		font-size: 1rem;
+		margin:0;
+		margin-bottom: 0.5rem;
+		@include tablet{
+			margin: 1rem 0;
+			font-size: 2rem;
+		}
+	}
+	&__price{
+
+		margin: 0;
+		@include tablet{
+			font-size: 2rem;
+		}
+	}
+
+}

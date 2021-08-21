@@ -1,0 +1,25 @@
+{
+  "name": "capstone-oro",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MjxOro/glowing-lamp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MjxOro/glowing-lamp/issues"
+  },
+  "homepage": "https://github.com/MjxOro/glowing-lamp#readme",
+  "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0"
+  }
+}
