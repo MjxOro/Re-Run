@@ -22,13 +22,14 @@ class AddPost extends React.Component {
 				authorization: `Bearer ${token}`,
 			}
 		})
-		.then(res =>{
-			console.log(res)
+		.then((res) =>{
+			console.log(res.data)
 			this.setState({currentUser: res.data})
 		})
 		.catch(err =>{
 			console.log(err)
 		})
+		console.log(this.state.currentUser)
 	}
 	handleChange = (e) =>{
 		this.setState({ postInfo:{ ...this.state.postInfo, [e.target.name]: e.target.value }})
@@ -77,7 +78,7 @@ class AddPost extends React.Component {
 				<Route render ={(routerProps)=>
 					<Header  currentUser={this.state.currentUser} {...routerProps} />
 				}/>
-				<AddPostForm handleUpload={this.handleUpload} previewImg={this.state.previewImg} handleChangeImg={this.handleChangeImg} handleChange={this.handleChange} />
+				<AddPostForm currentUser={this.state.currentUser} handleUpload={this.handleUpload} previewImg={this.state.previewImg} handleChangeImg={this.handleChangeImg} handleChange={this.handleChange} />
 				</>
 				}
 			</>

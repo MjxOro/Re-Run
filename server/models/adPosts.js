@@ -7,7 +7,7 @@ const adPostSchema = new mongoose.Schema(
 			required: true,
 		},
 		price: {
-			type: Number,
+			type: String,
 		},
 		premium: {
 			type: Boolean,

@@ -2,7 +2,7 @@
 @use '../../partials/mixins' as *;
 @use '../../partials/globals';
 
-.add{
+.edit{
 	display: flex;
 	justify-content: center;
 	overflow: hidden;
@@ -39,6 +39,7 @@
 		}
 	}
 	&__goback{
+		cursor: pointer;
 		color: $mint;
 		height: 2rem;
 		width: 2rem;

@@ -18,7 +18,7 @@ const MyAds = (props) =>{
 				<main className='myads__grid'>
 			{
 				props.data.map(card =>(
-					<div id={card.id} className='myads__card'>
+					<div  className='myads__card'>
 						<img className='myads__img' src={card.image}/>
 						<div className='myads__info-container'>
 							<div className='myads__text-container'>
@@ -26,12 +26,12 @@ const MyAds = (props) =>{
 								<p className='myads__price'>{card.price}</p>
 							</div>
 							<div className='myads__icon-container'>
-								<Link className='myads__link' to='/edit/post'>
+								<Link className='myads__link' to={'/edit/post/' + card._id}>
 									<FaRegEdit className='myads__edit'/>
 								</Link>
-								<Link className='myads__link' to='/delete/post'>
+								<div className='myads__link' id={card._id} onClick={props.handleOpenDelete}>
 									<ImCross className='myads__delete'/>
-								</Link>
+								</div>
 							</div>
 						</div>
 

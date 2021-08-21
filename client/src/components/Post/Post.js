@@ -76,7 +76,7 @@ const Post = (props) => {
 		>
 			<motion.div className='post__main-container'>
 				<div className='post__top'>
-					<motion.img src={props.data[index].image} className='post__img'
+					<motion.img src={props.data.image} className='post__img'
 					initial={responsiveInitial()}
 					animate={responsiveAnimate()}
 					/>
@@ -92,8 +92,8 @@ const Post = (props) => {
 						transition: {duration: 2, ease: 'easeInOut'},
 					}}
 					>
-						<p className='post__title'>{props.data[index].title}</p>
-						<p className='post__price'>{props.data[index].price}</p>
+						<p className='post__title'>{props.data.title}</p>
+						<p className='post__price'>{props.data.price}</p>
 					</motion.div>
 				</div>
 			</motion.div>
