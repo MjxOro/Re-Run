@@ -9,28 +9,8 @@ import { motion } from 'framer-motion'
 class Header extends react.Component {
 	state = {
 		showSidebar: false,
-		currentUser: null
 	} 
 	componentDidMount = () => {
-		const token = sessionStorage.getItem("token")
-		axios.get(process.env.REACT_APP_API_URL+'/users/current', {
-			headers: {
-				authorization: `Bearer ${token}`,
-			}
-		})
-		.then(res =>{
-			console.log(res)
-			this.setState({currentUser: res.data.currentUser})
-		})
-		.catch(err =>{
-			console.log(err)
-		})
-
-
-
-		//Axios call if theres an account thats logged in.
-		//That will change the profile picture and status on header 
-		//If an account is logged in
 
 	}
 	handleSidebar = () =>{
@@ -53,7 +33,7 @@ class Header extends react.Component {
 
 	render = () => {
 		return(
-		this.state.currentUser &&
+			 this.props.currentUser && (
 			<header className='hd'>
 				<div className='hd__container'>
 					<Link to='/' className='hd__logo' />
@@ -64,7 +44,7 @@ class Header extends react.Component {
 							<Link to='/' className='hd__link'>Delete posts</Link>
 							<Link to='/' className='hd__link'>Points</Link>
 						</nav>
-						<Link to='/login'>
+						<Link to='/add/posts'>
 						<motion.div
 						whileHover={{scale:1.3}}
 						transition={this.transition}
@@ -86,8 +66,10 @@ class Header extends react.Component {
 					</div>
 					</nav>
 			</div>
-				<Sidebar handleLogout={this.handleLogout} currentUser={this.state.currentUser} close={this.handleSidebar} blnClose={this.state.showSidebar} />
+				<Sidebar handleLogout={this.handleLogout} currentUser={this.props.currentUser} close={this.handleSidebar} blnClose={this.state.showSidebar} />
 			</header>
+			)
+			
 		)
 	}
 }
