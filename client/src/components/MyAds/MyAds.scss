@@ -2,17 +2,9 @@
 @use '../../partials/mixins' as *;
 @use '../../partials/globals' as *;
 
-.main{
+.myads{
 	display:flex;
 	flex-direction: column;
-	padding: 0 1rem;
-	&__h1{
-		color: $white;
-		text-align: center;
-		font-size: 2rem;
-		height: 5rem;
-
-	}
 	&__grid{
 		width: 100%;
 		height: 100%;
@@ -23,24 +15,57 @@
 		padding: 0 1rem;
 		@include tablet{
 			display:grid;
-			grid-template-columns: repeat(3,min-content);
+			grid-template-columns: repeat(3,2fr);
 			grid-gap: 1.5rem;
 			padding: 0 1rem;
-			max-width: 1920px;
 		}
 		@include desktop{
-			grid-template-columns: repeat(4,min-content);
+			grid-template-columns: repeat(4,1.5fr);
+			max-width: 1440px;
 			grid-gap: 2rem;
-			margin:auto;
+			justify-content: center;
+			margin: auto
 		}
 
+	}
+	&__header{
+		padding: 0 1rem;
+		display: flex;
+		align-items: center;
+		margin: 1.25rem 0;
+		@include tablet{
+			margin: 2.5rem 0;
+			max-width: 1440px;
+		}
+		@include desktop{
+			margin: auto;
+		}
+	}
+	&__goback{
+		color: $mint;
+		height: 2rem;
+		width: 2rem;
+		margin-right: 1rem;
+		@include tablet{
+			height: 3rem;
+			width: 3rem;
+			margin-right: 2.5rem;
+
+		}
+	}
+	&__h1{
+		color: $white;
+		font-size: 2rem;
+		@include tablet{
+			font-size: 5rem;
+
+		}
 	}
 	&__card{
 		border: 1px solid $light-mint;
 		border-radius: 0.5rem;
 		box-shadow: 0 4px 12px 4px rgba(255,255,255,.2);
-		width: 85vw;
-		max-width: 100%;
+		width: 100%;
 		height: 10rem;
 		display:flex;
 		box-sizing: border-box;
@@ -49,7 +74,6 @@
 		overflow: hidden;
 		box-sizing: border-box;
 		@include tablet{
-			width: 75%;
 			flex-direction: column;
 			min-width: 15rem;
 			height: auto;
@@ -80,29 +104,49 @@
 		width: inherit;
 		overflow: hidden;
 	}
+	&__info-container{
+		flex-grow:1;
+	}
 	&__text-container{
-		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
 		padding: 0.5rem;
-		grid-row: 1;
+		height:50%;
 	}
 	&__title{
-		font-size: 1rem;
+		font-size: 1.5rem;
 		margin:0;
-		margin-bottom: 0.5rem;
+		margin-bottom: 1.5rem;
 		@include tablet{
 			margin: 1rem 0;
 			font-size: 2rem;
 		}
 	}
 	&__price{
-
+		font-size: 1.25rem;
 		margin: 0;
 		@include tablet{
 			font-size: 2rem;
 		}
 	}
+	&__icon-container{
+		display:flex;
+		justify-content: space-around;
+		align-items: center;
+		height:50%;
+	}
+
+	&__edit{
+		height: 2rem;
+		width: 2rem;
+		color: $light-mint;
+	}
+	&__delete{
+		height: 2rem;
+		width: 2rem;
+		color: red;
+	}
+
 }
+
