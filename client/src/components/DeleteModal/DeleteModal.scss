@@ -1,37 +1,39 @@
+@use '../../partials/globals';
 @use '../../partials/vairables' as *;
 @use '../../partials/mixins' as *;
-@use '../../partials/globals' as *;
 
-.main{
-	display:flex;
-	flex-direction: column;
-	padding: 0 1rem;
-	&__h1{
-		color: $white;
-		text-align: center;
-		font-size: 2rem;
-		height: 5rem;
-
+.delete{
+	pointer-events: all;
+	position: fixed;
+	padding: 1rem;
+	z-index: 20000;
+	top:0;
+	height: 100%;
+	width: 100%;
+	background-color: rgb(0, 0, 0, 0.3);
+	transition: all 500ms ease-in-out;
+	&--close{
+		visibility: hidden;
+		pointer-events: none;
 	}
-	&__grid{
-		width: 100%;
-		height: 100%;
+	&__container{
+		transition: all 500ms ease-in-out;
+		pointer-events: all;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-around;
 		align-items: center;
-		padding: 0 1rem;
-		@include tablet{
-			display:grid;
-			grid-template-columns: repeat(3,min-content);
-			grid-gap: 1.5rem;
-			padding: 0 1rem;
-			max-width: 1920px;
+		border-radius: 10px;
+		box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+		background-color: $dark-navy;
+		padding: 1rem;
+		height:100%;
+		&--close{
+			opacity: 0;
 		}
-		@include desktop{
-			grid-template-columns: repeat(4,min-content);
-			grid-gap: 2rem;
-			margin:auto;
+		@include tablet{
+			margin-top: 8rem;
+			height: 50%;
+
 		}
 
 	}
@@ -39,7 +41,7 @@
 		border: 1px solid $light-mint;
 		border-radius: 0.5rem;
 		box-shadow: 0 4px 12px 4px rgba(255,255,255,.2);
-		width: 85vw;
+		width: 100%;
 		height: 10rem;
 		display:flex;
 		color: $white;
@@ -47,12 +49,11 @@
 		overflow: hidden;
 		box-sizing: border-box;
 		@include tablet{
-			width: 100%;
 			flex-direction: column;
-			min-height: 25rem;
+			min-height: 28rem;
 			max-width: 20rem;
 			height: 100%;
-			max-height: 25rem;
+			max-height: 28rem;
 		}
 		@include desktop{
 			max-width: 22rem;
@@ -92,6 +93,7 @@
 		flex-grow:1;
 		text-overflow: ellipsis;
 		overflow: hidden;
+		background-color: $mint;
 	}
 	&__text-container{
 		overflow: hidden;
@@ -130,24 +132,46 @@
 			flex-grow: 1;
 		}
 	}
+	&__greeting{
+		color: $white;
+		margin: 0;
+		margin-bottom: 5rem;
+		&:first-child{
+			margin-bottom:1rem;
+			font-size: 3rem;
+		}
+	}
 	&__icon-container{
-		display:flex;
+		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		height:30%;
+		width: 100%;
+		margin-top: 5rem;
+		@include tablet{
+			margin-top: 1rem;
+			width: 50%;
+			max-width: 25rem;
+		}
 	}
-
-	&__edit{
-		height: 2rem;
-		width: 2rem;
-		color: $light-mint;
+	&__delete-btn{
+		pointer-events: none;
+		height: 2.25rem;
+		width: 2.25rem;
+		color: $mint;
+		&--container{
+			pointer-events: all;
+			cursor: pointer;
+		}
 	}
-	&__delete{
+	&__close-btn{
 		pointer-events: none;
 		height: 2rem;
 		width: 2rem;
 		color: red;
+		&--container{
+			pointer-events: all;
+			cursor: pointer;
+		}
 	}
-
-
 }
+

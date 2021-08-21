@@ -9,6 +9,7 @@ import MainPage from './pages/MainPage/MainPage'
 import PostPage from './pages/PostPage/PostPage'
 import AddPost from './pages/AddPost/AddPost';
 import MyAdPosts from './pages/MyAdPosts/MyAdPosts';
+import EditPost from './pages/EditPost/EditPost';
 function App() {
   return (
 		<BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
 				render={({location}) =>(
 					<AnimatePresence exitBeforeEnter>
 						<Switch location={location} key={location.pathname} >
+							<ProtectedRoute path='/edit/post/:id' component={EditPost}/>
 							<ProtectedRoute path='/mypostings' component={MyAdPosts}/>
 							<ProtectedRoute path='/add/posts' component={AddPost}/>
 							<ProtectedRoute path='/post/:id' component={PostPage}/>

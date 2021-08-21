@@ -18,8 +18,8 @@ const Hero = (props) =>{
 	return(
 		<article className='hero'>
 			<section key={props.data[index].title} className='hero__container'>
-				<Link to={'/post/' + props.data[index].id}>
-				<motion.img src={props.data[index].image} id={props.data[index].id} className='hero__img'
+				<Link to={'/post/' + props.data[index]._id}>
+				<motion.img src={props.data[index].image} id={props.data[index]._id} className='hero__img'
 				whileHover={{scale:1.1}}
 				transition={transition}
 				/>

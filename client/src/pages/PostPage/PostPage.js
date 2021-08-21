@@ -9,12 +9,12 @@ import { Route } from 'react-router-dom'
 class PostPage extends React.Component{
 	state = {
 		heroObj: jsonData,
-		index: null,
+		index: 0,
 		currentUser: null,
+		filterPost: null,
 
 	}
 	componentDidMount = () =>{
-		this.setState({index: this.props.match.params.id-1})
 		const token = sessionStorage.getItem("token")
 		axios.get(process.env.REACT_APP_API_URL+'/secure/current/user', {
 			headers: {
@@ -22,27 +22,29 @@ class PostPage extends React.Component{
 			}
 		})
 		.then(res =>{
-			console.log(res)
 			this.setState({currentUser: res.data})
+			return (axios.get(process.env.REACT_APP_API_URL+'/secure/all/postings',{headers:{authorization: `Bearer ${token}`}}))
+		})
+		.then(res =>{
+			const filtered = res.data.find(post =>{return post._id === this.props.match.params.id})
+			console.log(filtered)
+			this.setState({filterPost: filtered})
 		})
 		.catch(err =>{
 			console.log(err)
 		})
 	}
-	componentDidUpdate = (prevProps, prevState) =>{
 	
-
-	}
 
 	render = () =>{
 		return(
 			<>
-				{this.state.currentUser &&
+				{this.state.currentUser && this.state.filterPost &&
 				<>
 				<Route  render ={(routerProps)=>
 					<Header currentUser={this.state.currentUser} {...routerProps} />
 				}/>
-				<Post currentUser={this.state.currentUser} data={this.state.heroObj} index={this.state.index} />
+				<Post currentUser={this.state.currentUser} data={this.state.filterPost} index={this.state.index} />
 				<SimpleMap/>
 				</>
 				}

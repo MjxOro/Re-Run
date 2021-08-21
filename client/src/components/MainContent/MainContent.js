@@ -11,7 +11,7 @@ const MainContent = (props) =>{
 			<h1 className='main__h1'>What Other People are Selling</h1>
 			<div className='main__grid'>
 		{props.data.map(card =>(
-			<Link to={'/post/' + card.id} className ='main__card-link'>
+			<Link to={'/post/' + card._id} className ='main__card-link'>
 				<motion.div  className='main__card'
 				whileHover={{scale:1.1}}
 				transition={transition}
