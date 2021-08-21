@@ -1,0 +1,172 @@
+@use '../../partials/vairables' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals';
+
+.add{
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	&__container{
+		overflow: hidden;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 0.5rem;
+		padding: 1rem;
+		border: 2px solid $mint;
+		border-radius: 20px;
+		@include tablet{
+			width: 85%;
+		}
+		@include desktop-break{
+			max-width: 1440px;
+		}
+	}
+	&__image{
+		width: 50%;
+		height: 15rem;
+		border: 2px solid $white;
+		margin-bottom: 1rem;
+		@include tablet{
+			height: 25rem;
+		}
+		@include desktop{
+			height: 30rem;
+		}
+	}
+	&__label-img{
+		position: relative;
+		overflow: hidden;
+		top: -15rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		height: 100%;
+		width: 100%;
+		flex-grow: 1;
+		@include tablet{
+			top: -25rem;
+		}
+		@include desktop{
+			top: -30rem;
+		}
+
+	}
+	&__upload-icon{
+		color: $light-mint;
+		height: 5rem;
+		width: 5rem;
+	}
+	&__upload{
+		visibility: hidden;;
+	}
+	&__preview{
+		overflow: hidden;
+		position: relative;
+		z-index: -2;
+		height: inherit;
+		width: 100%;
+		max-width: 100%;
+		object-fit: cover;
+	}
+	&__info-container{
+		display: flex;
+		flex-direction: column;
+	}
+	&__label{
+		text-align: left;
+		width: 100%;
+		max-width: 475px;
+		color: $white;
+		margin-bottom: 0.25rem;
+	}
+	&__input{
+		padding: 1rem;
+		width: 100%;
+		max-width: 475px;
+		height: 3rem;
+		border-radius: 0.75rem;
+		margin-bottom: 1rem;
+		border: 2px solid grey;
+		&--checkbox{
+			height: 1rem;
+			max-width: 1rem;
+			text-align: center;
+			margin: 0;
+			margin-bottom: 0.2rem;
+			margin-right: 1rem;
+			
+		}
+		&--select{
+			padding: 0;
+		}
+		@include tablet{
+			margin-bottom: 2rem;
+			&--checkbox{
+				height: 1rem;
+				max-width: 1rem;
+				text-align: center;
+				margin: 0;
+				margin-bottom: 0.2rem;
+				margin-right: 1rem;
+				
+			}
+		}
+		&:focus{
+			outline:none;
+			border: 2px solid $light-mint;
+			border-radius: 0.75rem;
+		}
+		&::placeholder{
+			color: $mint;
+		}
+		&--error{
+			animation-name: inputWrong;
+			animation-duration: 550ms;
+			animation-timing-function: ease-in;
+			border: 2px solid red;
+		}
+	}
+	&__checkbox-container{
+		display:flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		margin-bottom: 1rem;
+		
+	}
+	&__btn{
+		margin: 1rem 0;
+		width: 3rem;
+		max-width: 475px;
+		height: 3rem;
+		border-radius: 0.75rem;
+		border: none;
+		color: $white;
+		background: linear-gradient(90deg, rgba(193,245,223,1) 0%, rgba(139,237,196,1) 0%, rgba(110,232,181,1) 6%, rgba(95,230,173,1) 23%, rgba(91,229,171,1) 72%, rgba(25,203,140,1) 93%);
+		@include tablet{
+			transform: scale(1.2);
+		}
+		@include desktop{
+			width: 100%;
+		}
+	}
+	&__btn-icon{
+		height: 2rem;
+		width: 2rem;
+		@include desktop{
+			display: none;
+		}
+	}
+	&__btn-text{
+		display:none;
+		@include desktop{
+			display:block;
+		}
+	}
+
+
+	
+}

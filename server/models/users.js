@@ -1,7 +1,6 @@
-const mongoose = require("mongoose"),
-  bcrypt = require("bcryptjs"),
-  jwt = require("jsonwebtoken"),
-  Task = require("./task");
+const mongoose = require("mongoose")
+const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
 
 const userSchema = new mongoose.Schema({
 		username: {
@@ -17,6 +16,10 @@ const userSchema = new mongoose.Schema({
 		password: {
 			type: String,
 			required: true,
+		},
+		points:{
+			type: String,
+			defualt: "0",
 		},
 		profilePicture: {
 			type: String,
@@ -45,7 +48,7 @@ userSchema.methods.toJSON = function () {
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
   const token = jwt.sign(
-    { _id: user._id.toString(), name: user.username },
+    { _id: user._id.toString(), email: user.email },
     process.env.JWT_SECRET,
     { expiresIn: "24h" }
   );
@@ -87,7 +90,6 @@ userSchema.pre("save", async function (next) {
 
 /**
  * Delete user tasks when a user is removed.
- */
 userSchema.pre("remove", async function (next) {
   const user = this;
   await Task.deleteMany({
@@ -95,6 +97,7 @@ userSchema.pre("remove", async function (next) {
   });
   next();
 });
+ */
 
 const User = mongoose.model("User", userSchema);
 

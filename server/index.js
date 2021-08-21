@@ -8,15 +8,19 @@ const PORT = 8080
 const userRoutes = require('./routes/userRoutes')
 const adPostRoutes = require('./routes/adPostRoutes')
 const AdPost = require('./models/adPosts')
-const fileUpload = require('express-fileupload')
+const secureUserRoutes = require('./routes/secure/sercureUser')
+const authorize = require("./middleware/authorize")
 
 
 app.use(cors())
 app.use(express.json())
-app.use(fileUpload())
 app.use(express.static('public'))
 app.use(morgan('dev'))
+
+
 app.use('/users',userRoutes)
+app.use("/secure", authorize, secureUserRoutes);
+
 
 
 

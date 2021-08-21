@@ -1,29 +1,50 @@
 const mongoose = require('mongoose')
-const { v4: uuidv4 } = require('uuid');
 
-const AdPostSchema = mongoose.Schema({
-	
-	title: {
-		type: String,
-		required: true,
-	},
-	price: {
-		type: Number,
-		required: true,
-	},
-	premium: {
-		type: Boolean,
-		required: true,
-	},
-	image: {
-		type: String,
-		required: true,
-	},
-	location: {
-		type: String,
-		required: true,
-	},
+const adPostSchema = new mongoose.Schema(
+	{
+		title: {
+			type: String,
+			required: true,
+		},
+		price: {
+			type: Number,
+		},
+		premium: {
+			type: Boolean,
+			required: true,
+		},
+		catagory: {
+			trype: String,
+		},
+		description: {
+			type: String,
+		},
+		image: {
+			type: String,
+		},
+		location: {
+			type: String,
+			required: true,
+		},
+		owner: {
+			type: String,
+			required: true,
+		}
 
-})
+	},
+  {
+    timestamps: true,
+  }
+)
 
- module.exports = mongoose.model('AdPosts', AdPostSchema)
+adPostSchema.methods.toJSON = function () {
+  const adPost = this;
+  const adPostObject = adPost.toObject();
+  return adPostObject;
+};
+
+const AdPost = mongoose.model("AdPost", adPostSchema);
+
+module.exports = AdPost;
+
+
