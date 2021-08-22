@@ -12,6 +12,7 @@ class PostPage extends React.Component{
 		index: 0,
 		currentUser: null,
 		filterPost: null,
+		allUsers: null,
 
 	}
 	componentDidMount = () =>{
@@ -22,6 +23,7 @@ class PostPage extends React.Component{
 			}
 		})
 		.then(res =>{
+			console.log(res.data)
 			this.setState({currentUser: res.data})
 			return (axios.get(process.env.REACT_APP_API_URL+'/secure/all/postings',{headers:{authorization: `Bearer ${token}`}}))
 		})
@@ -29,6 +31,11 @@ class PostPage extends React.Component{
 			const filtered = res.data.find(post =>{return post._id === this.props.match.params.id})
 			console.log(filtered)
 			this.setState({filterPost: filtered})
+			return (axios.get(process.env.REACT_APP_API_URL + '/secure/all/users',{headers:{authorization: `Bearer ${token}`}}))
+		})
+		.then(res =>{
+			console.log(res.data)
+			this.setState({allUsers: res.data})
 		})
 		.catch(err =>{
 			console.log(err)
@@ -39,12 +46,12 @@ class PostPage extends React.Component{
 	render = () =>{
 		return(
 			<>
-				{this.state.currentUser && this.state.filterPost &&
+				{this.state.currentUser && this.state.filterPost && this.state.allUsers &&
 				<>
 				<Route  render ={(routerProps)=>
 					<Header currentUser={this.state.currentUser} {...routerProps} />
 				}/>
-				<Post currentUser={this.state.currentUser} data={this.state.filterPost} index={this.state.index} />
+				<Post allUsers={this.state.allUsers} currentUser={this.state.currentUser} data={this.state.filterPost} index={this.state.index} />
 				<SimpleMap/>
 				</>
 				}

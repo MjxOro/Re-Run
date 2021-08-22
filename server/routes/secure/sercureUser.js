@@ -17,7 +17,7 @@ router.get("/current/user", async (req, res) => {
 });
 router.get("/user/posts", async (req,res) =>{
   try {
-    const user = await AdPost.find({ owner: req.decoded._id });
+    const user = await AdPost.find({ userId: req.decoded._id });
 		console.log(req.decoded._id)
     res.json(user);
   } catch (e) {
@@ -75,7 +75,7 @@ router.post("/add/post",upload.single('image'), async(req,res) =>{
 		category,
 		description,
 		premium,
-		owner: req.decoded._id,
+		userId: req.decoded._id,
 	})
 	adPost.save()
 	res.status(201).json(adPost)

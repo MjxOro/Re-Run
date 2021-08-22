@@ -57,13 +57,11 @@ const Post = (props) => {
 			}
 		}
 	}
-	const variants ={
-		
-	}
 	const transition ={
 		duration: 1.4,
 		ease: [0.6,0.01,-0.05,0.9],
 	}
+	const filteredUser = props.allUsers.find( user =>{ return user._id===props.data.userId})
 	return(
 		<>
 		{ index === null ?
@@ -80,10 +78,6 @@ const Post = (props) => {
 					initial={responsiveInitial()}
 					animate={responsiveAnimate()}
 					/>
-					<motion.div exit={{opacity:0}} transition={transition} className='post__controls'>
-						<FaAngleLeft onClick={props.slideLeft} className={index !== 0 ? 'post__prev' : 'post__prev post__prev--hidden'}/>
-						<FaAngleRight onClick={props.slideRight} className={index !== props.data.length-1 ? 'post__next' : 'post__next--hidden'}/>
-					</motion.div>
 					<motion.div  className='post__text-container'
 					initial={{opacity:0, x:'-100%'}}
 					animate={{
@@ -93,7 +87,12 @@ const Post = (props) => {
 					}}
 					>
 						<p className='post__title'>{props.data.title}</p>
+						<p className='post__price'>{props.data.description}</p>
 						<p className='post__price'>{props.data.price}</p>
+						<div className='post__userChat'>
+							<img className='post__pfp' src={filteredUser.profilePicture} />
+							<p className='post__chat-text' >{"Interested? Message: " + filteredUser.username}</p>
+						</div>
 					</motion.div>
 				</div>
 			</motion.div>

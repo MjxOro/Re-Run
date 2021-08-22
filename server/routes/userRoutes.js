@@ -17,6 +17,7 @@ router.post("/register", async (req, res) => {
       username,
       email,
       password,
+			profilePicture:`https://ui-avatars.com/api/?name=${username}`
     });
     const token = await user.generateAuthToken();
 		const sendBirdSignup = await User.findOne({email: req.body.email})
