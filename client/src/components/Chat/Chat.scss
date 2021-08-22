@@ -1,0 +1,93 @@
+@use '../../partials/vairables' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals';
+
+.chat{
+	background-color: $dark-navy;
+	&__list{
+		width: 100vw;
+		height: 100vh;
+		&>div{
+		width: 100vw;
+		height: 100vh;
+		margin: auto;
+		}
+		&--hidden{
+			visibility: hidden;
+			pointer-events: none;
+		}
+	}
+	&__app{
+		width: 100%;
+		position: absolute;
+		top: 5rem;
+		margin: auto;
+		&--hidden{
+			visibility: hidden;
+			pointer-events: none;
+		}
+	}
+	&__header{
+		padding: 0 1rem;
+		display: flex;
+		align-items: center;
+		margin: 1.25rem 0;
+		@include tablet{
+			margin: 2.5rem 0;
+			max-width: 1440px;
+		}
+		@include desktop{
+			margin: auto;
+		}
+	}
+	&__goback{
+		color: $mint;
+		height: 2rem;
+		width: 2rem;
+		margin-right: 1rem;
+		@include tablet{
+			height: 3rem;
+			width: 3rem;
+			margin-right: 2.5rem;
+
+		}
+	}
+}
+
+
+//=====================================================SDK STUFFS
+.sendbird-channel-list__header {
+	background-color:$dark-navy;
+	height: 64px;
+	min-height: 64px;
+}
+.sendbird-theme--light .sendbird-channel-header {
+	margin: auto;
+	border-bottom: 1px solid var(--sendbird-light-onlight-04);
+	background-color: $mint;
+}
+.sendbird-channel-list__body {
+    flex: 1 1;
+    -ms-flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+		background-color: $dark-navy;
+}
+.sendbird-theme--light .sendbird-channel-preview { //NEUTRAL STATE OF CHANNEL
+	margin: auto;
+	border-bottom: solid 1px var(--sendbird-light-onlight-04);
+	background-color: $white;
+	border-left: solid 4px grey;
+	&:hover{
+		background-color: $mint;
+	}
+}
+.sendbird-theme--light .sendbird-channel-preview--active { //CHOSEN STATE
+	margin: auto;
+	border-left: solid 4px grey;
+	border-bottom: solid 1px var(--sendbird-light-onlight-04);
+	background-color: $light-mint;
+	&:hover{
+		border-left: grey;
+	}
+}

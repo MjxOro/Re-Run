@@ -35,21 +35,35 @@ router.get("/all/users", async (req, res) => {
   }
 });
 
-router.put("/upload", (req,res) =>{
-
-
-})
-//Create an Posting
-router.post("/add/post",upload.single('image'), async(req,res) =>{
+router.put("/upload/pfp",upload.single("image"), async (req,res) =>{
 	if(req.file){
-		const deleteImg = await AdPost.findOne({_id: req.params.id},(err) =>{
+		const deleteImg = await User.findOne({_id: req.decoded._id})
+		if(deleteImg){
+			console.log("ID FOUND!")
+			if(deleteImg.profilePicture !== ""){
+				const imgId = deleteImg.profilePicture.split("/")
+				fs.unlinkSync("./public/" + imgId[imgId.length-1],(err) =>{
+					if(err){
+						console.log("file not deleted")
+					}
+					console.log("File also Deleted!")
+				})
+			}
+		}
+
+		const imgUrl = process.env.SERVER_URL + req.file.filename
+		const updatePfp = await User.findOneAndUpdate({_id: req.decoded._id}, {profilePicture: imgUrl},(err)=>{
 			if(err){
 				res.status(400).json({message: err + " ID NOT FOUND"})
 			}
+			
 		})
-		const imgId = deleteImg.image.split("/")
-		fs.unlink("../../public/" + imgId[imgId.length-1])
+		updatePfp.save()
+		res.status(200).json(updatePfp)
 	}
+})
+//Create an Posting
+router.post("/add/post",upload.single('image'), async(req,res) =>{
 
 	const imgUrl = req.file ? process.env.SERVER_URL + req.file.filename : process.env.SERVER_URL + 'null'
 	const {title, price, location, category, description, premium} = req.body
@@ -70,34 +84,46 @@ router.post("/add/post",upload.single('image'), async(req,res) =>{
 
 // PUT REQUEST
 router.put("/edit/post/:id",upload.single('image'), async(req,res) =>{
-		let putRequest = []
-		putRequest.push({...req.body, image: process.env.SERVER_URL+req.file.filename})
-		putRequest.forEach(el => {
-		Object.keys(el).forEach(key => {
-			if (el[key] === null || el[key] === undefined || el[key] === 'null' || el[key] === 'undefined' ) {
-				delete el[key];
-				}
-			});
-		});
-		console.log(putRequest)
-		const adPost = await AdPost.findOneAndUpdate({_id: req.params.id},putRequest[0], (err) =>{
+	if(req.file){
+		const deleteImg = await AdPost.findOne({_id: req.params.id})
+		const imgId = deleteImg.image.split("/")
+		fs.unlinkSync("./public/" + imgId[imgId.length-1],(err) =>{
 			if(err){
-				res.status(400).json({message: err})
+				console.log("file not deleted")
 			}
-			console.log("DB Put requested")
+			console.log("File also Deleted!")
 		})
-		adPost.save()
-		res.status(201).json(adPost)
+	}
+
+	let putRequest = []
+	putRequest.push({...req.body, image: process.env.SERVER_URL+req.file.filename})
+	putRequest.forEach(el => {
+	Object.keys(el).forEach(key => {
+		if (el[key] === null || el[key] === undefined || el[key] === 'null' || el[key] === 'undefined' ) {
+			delete el[key];
+			}
+		});
+	});
+	console.log(putRequest)
+	const adPost = await AdPost.findOneAndUpdate({_id: req.params.id},putRequest[0], (err) =>{
+		if(err){
+			res.status(400).json({message: err})
+		}
+		console.log("DB Put requested")
+	})
+	adPost.save()
+	res.status(201).json(adPost)
 })
 //DELETE
-router.delete("/delete/post/:id", async(req,res) =>{
-	const deleteImg = await AdPost.findOne({_id: req.params.id},(err) =>{
-		if(err){
-			res.status(400).json({message: err + " ID NOT FOUND"})
-		}
-	})
+router.delete("/delete/post/:id", async (req,res) =>{
+	const deleteImg = await AdPost.findOne({_id: req.params.id})
 	const imgId = deleteImg.image.split("/")
-	fs.unlink("../../public/" + imgId[imgId.length-1])
+	fs.unlinkSync("./public/" + imgId[imgId.length-1],(err) =>{
+		if(err){
+			console.log("file not deleted")
+		}
+		console.log("File also Deleted!")
+	})
 
 	const adPost = await AdPost.findOneAndRemove({_id: req.params.id},(err) =>{
 		if(err){

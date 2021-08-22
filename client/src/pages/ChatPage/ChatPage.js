@@ -4,12 +4,15 @@ import Hero from '../../components/Hero/Hero'
 import MainContent from '../../components/MainContent/MainContent'
 import { Route } from 'react-router-dom'
 import axios from 'axios'
+import Chat from '../../components/Chat/Chat'
 
-class MainPage extends React.Component{
+class ChatPage extends React.Component{
 	state = {
 		index: 0,
 		currentUser: null,
 		allPost: null,
+		channelLink: "",
+		show: false,
 
 	}
 	componentDidMount = () =>{
@@ -30,24 +33,32 @@ class MainPage extends React.Component{
 		.catch(err =>{
 			console.log(err)
 		})
+		
+		const sendBirdHeader = { header: { "Content-Type": "application/json; charset=utf8", "Api-Token": process.env.SENDBIRD_KEY}}
+
+
+		
 	}
 	componentDidUpdate = (prevProps, prevState) =>{
 	
 
 	}
-
-	handleSlideLeft = () =>{
-		if(this.state.index > -1){
-			this.setState({index: this.state.index - 1})
-		}
-
-	}
-	handleSlideRight = () =>{
-		if(this.state.index < this.state.heroObj.length){
-			this.setState({index: this.state.index + 1})
-		}
+	getUrl = (url) =>{
+		console.log(url)
+		this.setState({
+			channelLink: url,
+			show: true,
+		})
 
 	}
+	handleGoback = () =>{
+		this.setState({
+			show: false,
+		})
+
+	}
+
+
 
 	render = () =>{
 		return(
@@ -57,12 +68,11 @@ class MainPage extends React.Component{
 					<Route  render ={ (routerProps)=>
 						<Header currentUser={this.state.currentUser} {...routerProps} />
 					}/>
-					<Hero data={this.state.allPost} index={this.state.index} slideRight={this.handleSlideRight} slideLeft={this.handleSlideLeft}/>
-					<MainContent data={this.state.allPost} />
+					<Chat handleGoback={this.handleGoback} show={this.state.show} getUrl={this.getUrl} channelLink={this.state.channelLink} currentUser={this.state.currentUser} />
 					</>
 				}
 			</>
 		)
 	}
 }
-export default MainPage
+export default ChatPage

@@ -16,7 +16,6 @@ const Sidebar = (props) => {
 						<Link className='sidebar__link'>Home</Link>
 						<Link className='sidebar__link'>Category</Link>
 						<Link className='sidebar__link'>About</Link>
-						<Link className='sidebar__link'>Profile</Link>
 						<Link to='/mypostings' className='sidebar__link'>My Postings</Link>
 						<div className='sidebar__link'>
 							<FiLogOut onClick={props.handleLogout} className='sidebar__logout'/>
@@ -36,7 +35,6 @@ const Sidebar = (props) => {
 						<Link className='sidebar__link'>Home</Link>
 						<Link className='sidebar__link'>Category</Link>
 						<Link className='sidebar__link'>About</Link>
-						<Link className='sidebar__link'>Profile</Link>
 						<Link  className='sidebar__link'>My Postings</Link>
 						<div className='sidebar__link'>
 							<FiLogOut className='sidebar__logout'/>
