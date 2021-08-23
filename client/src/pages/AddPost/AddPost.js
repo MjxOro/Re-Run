@@ -105,14 +105,3 @@ class AddPost extends React.Component {
 }
 export default AddPost
 
-		axios.post(process.env.REACT_APP_API_URL + '/secure/add/post', formData,{
-			headers: {
-				authorization: `Bearer ${token}`,
-				"Content-Type": "multipart/form-data",
-			}
-		})
-		.then(res =>{console.log(res)})
-		.catch(err =>{console.log(err)})
-
-		this.props.history.push('/')
-	}
