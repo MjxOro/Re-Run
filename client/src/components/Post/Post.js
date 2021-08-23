@@ -104,6 +104,7 @@ const Post = (props) => {
 							<img className='post__pfp' src={filteredUser.profilePicture} />
 							<p className='post__chat-text' >{"Interested? Message: " + filteredUser.username}</p>
 						</div>
+					<p className='post__maps-label'>{`${filteredUser.username}'s location`}</p>
 					</motion.div>
 				</div>
 			</motion.div>

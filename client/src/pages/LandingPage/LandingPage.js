@@ -3,11 +3,12 @@ import BackgroundAnimation from '../../components/BackgroundAnimation/Background
 import Header from '../../components/Header/Header'
 import Data from '../../cardData.json'
 import GetStarted from '../../components/GetStarted/GetStarted'
+import axios from 'axios'
 
 
 class LandingPage extends react.Component{
 	state ={
-		postCards: Data,
+		postCards: null,
 		title2: ['Run','Fresh','Cycle'],
 		index: 0,
 		direction: [5000,-5000],
@@ -15,6 +16,10 @@ class LandingPage extends react.Component{
 
 	componentDidMount = () =>{
 		//Gets data from server to load the animated cards of whats being sold.
+		axios.get(process.env.REACT_APP_API_URL +'/preview')
+		.then(res =>{
+			this.setState({postCards: res.data})
+		})
 		this.myInterval = setInterval(()=>{
 			console.log('HELLO')
 			if(this.state.index < 2){
@@ -34,12 +39,16 @@ class LandingPage extends react.Component{
 
 	render = () =>{
 		return(
+			<>
+			{ this.state.postCards &&
 			<section>
 				<BackgroundAnimation direction={this.state.direction[0]} cardData={this.state.postCards}/>
 				<BackgroundAnimation direction={this.state.direction[1]} cardData={this.state.postCards}/>
 				<BackgroundAnimation direction={this.state.direction[0]} cardData={this.state.postCards}/>
 				<GetStarted cycle={this.state.title2[this.state.index]}/>
 			</section>
+			}
+			</>
 		)
 	}
 }

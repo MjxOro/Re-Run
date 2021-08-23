@@ -33,6 +33,7 @@ class AddPost extends React.Component {
 	}
 	handleChange = (e) =>{
 		this.setState({ postInfo:{ ...this.state.postInfo, [e.target.name]: e.target.value }})
+		console.log(e.target.value)
 		console.log(this.state.postInfo)
 	}
 	handleChangeImg = (e) =>{

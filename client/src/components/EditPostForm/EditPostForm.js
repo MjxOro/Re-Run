@@ -31,7 +31,7 @@ const EditPostForm = (props) =>{
 					<input onChange={props.handleChange} className='edit__input' name='location' />
 
 					<label className='edit__label'>Category</label>
-					<select id='category' className='edit__input edit__input--select'  name='category' >
+					<select onChange={props.handleChange} id='category' className='edit__input edit__input--select'  name='category' >
 						<option value="electronics">Electronics</option>
 						<option value="clothing">Clothing</option>
 						<option value="general">General</option>

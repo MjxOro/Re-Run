@@ -14,7 +14,8 @@ const adPostSchema = new mongoose.Schema(
 			required: true,
 		},
 		category: {
-			trype: String,
+			type: String,
+			required: true,
 		},
 		description: {
 			type: String,

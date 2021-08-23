@@ -38,10 +38,18 @@
 		&>p{pointer-events: none;}
 		padding: 0.5rem;
 		display:flex;
+		height: 4rem;
 		justify-content: center;
 		align-items: center;
 		border-radius: 1rem;
 		background-color: $light-mint;
+		@include tablet{
+			padding: 0 2rem;
+			justify-content: flex-start;
+			height: 6rem;
+			width: 80%;
+			max-width: 768px;
+		}
 	}
 	&__pfp{
 		height: 3rem;
@@ -49,10 +57,17 @@
 		background-color: $white;
 		border-radius: 50%;
 		margin-right: 1rem;
+		@include tablet{
+			height: 5rem;
+			width: 5rem;
+		}
 	}
 	&__chat-text{
 		color: $white;
-		text-size: 1.25rem;
+		font-size: 1.25rem;
+		@include tablet{
+			font-size: 2.5rem;
+		}
 	}
 	&__next{
 		pointer-events: all;
@@ -87,7 +102,7 @@
 		pointer-events: all;
 		position:absolute;
 		width: 100%;
-		top: 22rem;
+		top: 21rem;
 		padding: 0 1rem;
 		z-index: 2;
 		display: flex;
@@ -104,16 +119,32 @@
 	}
 
 	&__title{
+		text-align: center;
 		color: $white;
 		margin: 0;
 		margin-bottom: 2rem;
-		text-size: 1.5rem;
+		font-size: 2rem;
+		@include tablet{
+			font-size: 4rem;
+		}
 	}
 
 	&__price{
 		color: $white;
 		margin: 0;
-		text-size: 1.5rem;
+		font-size: 1rem;
+		margin-bottom: 1rem;
+		@include tablet{
+			font-size: 2rem;
+		}
+	}
+	&__maps-label{
+		color: $white;
+		margin-top: 8rem;
+		font-size: 2rem;
+		@include tablet{
+			font-size: 4rem;
+		}
 	}
 }
 

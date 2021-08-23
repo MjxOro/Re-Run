@@ -6,16 +6,38 @@ const upload = multer({dest: "public/"})
 const axios = require("axios")
 const fs = require("fs")
 
+
+//ADD POINTS
+router.put("/add/points", async(req, res) =>{
+	try{
+		const user = await User.findOneAndUpdate({ _id: req.decoded._id },{$inc: {points: 1}})
+		res.status(200).json(user)
+	}
+	catch(e){
+		res.status(400).json({error: e})
+	}
+})
+//
+router.put("/remove/points", async(req, res) =>{
+	try{
+		const user = await User.findOneAndUpdate({ _id: req.decoded._id },{$inc: {points: -1}})
+		res.status(200).json(user)
+	}
+	catch(e){
+		res.status(400).json({error: e})
+	}
+})
+//CURRENT USER
 router.get("/current/user", async (req, res) => {
   console.log(req.decoded);
   try {
     const user = await User.findOne({ _id: req.decoded._id });
-		console.log(req.decoded._id)
     res.json(user);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
 });
+//OWNER'S POST
 router.get("/user/posts", async (req,res) =>{
   try {
     const user = await AdPost.find({ userId: req.decoded._id });
@@ -27,6 +49,7 @@ router.get("/user/posts", async (req,res) =>{
 
 })
 
+//ALL USERS
 router.get("/all/users", async (req, res) => {
   try {
     const users = await User.find();
@@ -36,6 +59,7 @@ router.get("/all/users", async (req, res) => {
   }
 });
 
+//PUT REQUEST FOR PFP
 router.put("/upload/pfp",upload.single("image"), async (req,res) =>{
 	if(req.file){
 		const deleteImg = await User.findOne({_id: req.decoded._id})
@@ -85,6 +109,7 @@ router.post("/add/post",upload.single('image'), async(req,res) =>{
 
 // PUT REQUEST
 router.put("/edit/post/:id",upload.single('image'), async(req,res) =>{
+
 	if(req.file){
 		const deleteImg = await AdPost.findOne({_id: req.params.id})
 		const imgId = deleteImg.image.split("/")
@@ -96,15 +121,15 @@ router.put("/edit/post/:id",upload.single('image'), async(req,res) =>{
 		})
 	}
 
-	let putRequest = []
-	putRequest.push({...req.body, image: process.env.SERVER_URL+req.file.filename})
-	putRequest.forEach(el => {
-	Object.keys(el).forEach(key => {
-		if (el[key] === null || el[key] === undefined || el[key] === 'null' || el[key] === 'undefined' ) {
-			delete el[key];
-			}
+		let putRequest = []
+		putRequest.push({...req.body, image: (req.file ?  process.env.SERVER_URL+req.file.filename : null)})
+		putRequest.forEach(el => {
+		Object.keys(el).forEach(key => {
+			if (el[key] === null || el[key] === undefined || el[key] === 'null' || el[key] === 'undefined' ) {
+				delete el[key];
+				}
+			});
 		});
-	});
 	console.log(putRequest)
 	const adPost = await AdPost.findOneAndUpdate({_id: req.params.id},putRequest[0], (err) =>{
 		if(err){

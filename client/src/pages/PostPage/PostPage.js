@@ -5,6 +5,7 @@ import Post from '../../components/Post/Post'
 import SimpleMap from '../../components/Maps/Maps'
 import axios from 'axios'
 import { Route } from 'react-router-dom'
+import Geocode from 'react-geocode'
 
 class PostPage extends React.Component{
 	state = {
@@ -13,9 +14,12 @@ class PostPage extends React.Component{
 		currentUser: null,
 		filterPost: null,
 		allUsers: null,
+		loaction: null,
 
 	}
 	componentDidMount = () =>{
+		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_KEY)
+		Geocode.setLocationType("APPROXIMATE")
 		const token = sessionStorage.getItem("token")
 		axios.get(process.env.REACT_APP_API_URL+'/secure/current/user', {
 			headers: {
@@ -36,6 +40,12 @@ class PostPage extends React.Component{
 		.then(res =>{
 			console.log(res.data)
 			this.setState({allUsers: res.data})
+			return (Geocode.fromAddress(this.state.filterPost.location))
+		})
+		.then(res =>{
+			console.log(res.results[0].geometry.location)
+			this.setState({location: res.results[0].geometry.location})
+
 		})
 		.catch(err =>{
 			console.log(err)
@@ -55,13 +65,13 @@ class PostPage extends React.Component{
 	render = () =>{
 		return(
 			<>
-				{this.state.currentUser && this.state.filterPost && this.state.allUsers &&
+				{this.state.currentUser && this.state.filterPost && this.state.allUsers && this.state.location &&
 				<>
 				<Route  render ={(routerProps)=>
 					<Header currentUser={this.state.currentUser} {...routerProps} />
 				}/>
 				<Post getChatCreation={this.getChatCreation} allUsers={this.state.allUsers} currentUser={this.state.currentUser} data={this.state.filterPost} index={this.state.index} />
-				<SimpleMap/>
+				<SimpleMap center={this.state.location}  />
 				</>
 				}
 			</>

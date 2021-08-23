@@ -18,6 +18,7 @@ app.use(express.static('public'))
 app.use(morgan('dev'))
 
 
+app.use('/preview',adPostRoutes)
 app.use('/users',userRoutes)
 app.use("/secure", authorize, secureUserRoutes);
 

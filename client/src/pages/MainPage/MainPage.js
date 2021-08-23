@@ -4,13 +4,14 @@ import Hero from '../../components/Hero/Hero'
 import MainContent from '../../components/MainContent/MainContent'
 import { Route } from 'react-router-dom'
 import axios from 'axios'
+import fillerData from '../../'
 
 class MainPage extends React.Component{
 	state = {
 		index: 0,
 		currentUser: null,
 		allPost: null,
-
+		premiumPosts: [],
 	}
 	componentDidMount = () =>{
 		const token = sessionStorage.getItem("token")
@@ -25,7 +26,14 @@ class MainPage extends React.Component{
 		})
 		.then(res =>{
 			console.log(res.data)
-			this.setState({allPost: res.data})
+			const premium = res.data.filter(post => {return post.premium === true})
+			console.log(premium)
+			const premiumIndex = Math.floor(premium.length / 2)
+			this.setState({
+				allPost: res.data,
+				premiumPosts: premium,
+				index: premiumIndex,
+			})
 		})
 		.catch(err =>{
 			console.log(err)
@@ -43,7 +51,7 @@ class MainPage extends React.Component{
 
 	}
 	handleSlideRight = () =>{
-		if(this.state.index < this.state.heroObj.length){
+		if(this.state.index < this.state.premiumPosts.length){
 			this.setState({index: this.state.index + 1})
 		}
 
@@ -52,12 +60,12 @@ class MainPage extends React.Component{
 	render = () =>{
 		return(
 			<>
-				{this.state.currentUser && this.state.allPost && 
+				{this.state.currentUser && this.state.allPost && this.state.premiumPosts && this.state.index > -1 &&
 					<>
 					<Route  render ={ (routerProps)=>
 						<Header currentUser={this.state.currentUser} {...routerProps} />
 					}/>
-					<Hero data={this.state.allPost} index={this.state.index} slideRight={this.handleSlideRight} slideLeft={this.handleSlideLeft}/>
+					<Hero data={!this.state.premium ? this.state.allPost : this.state.premium} index={this.state.index} slideRight={this.handleSlideRight} slideLeft={this.handleSlideLeft}/>
 					<MainContent data={this.state.allPost} />
 					</>
 				}

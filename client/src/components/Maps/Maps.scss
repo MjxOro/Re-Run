@@ -4,16 +4,18 @@
 
 .maps{
 	position: relative;
-	top:15rem;
+	top:28rem;
 	display: flex;
 	justify-content: center;
 	height: 30rem;
 	margin: auto;
 	@include tablet{
+		top: 38rem;
 		height: 45rem
 
 	}
 	@include desktop{
+		top: 40rem;
 		height: 40rem;
 	}
 	@include desktop-break{
