@@ -10,6 +10,13 @@ import PostPage from './pages/PostPage/PostPage'
 import AddPost from './pages/AddPost/AddPost';
 import MyAdPosts from './pages/MyAdPosts/MyAdPosts';
 import EditPost from './pages/EditPost/EditPost';
+import ChatPage from './pages/ChatPage/ChatPage';
+import Tech from './pages/Tech/Tech'
+import Clothing from './pages/Clothing/Clothing'
+import General from './pages/General/General'
+import Gardening from './pages/Gardening/Gardening'
+
+
 function App() {
   return (
 		<BrowserRouter>
@@ -17,6 +24,11 @@ function App() {
 				render={({location}) =>(
 					<AnimatePresence exitBeforeEnter>
 						<Switch location={location} key={location.pathname} >
+							<ProtectedRoute path='/category/electronics' component={Tech}/>
+							<ProtectedRoute path='/category/clothing' component={Clothing}/>
+							<ProtectedRoute path='/category/general' component={General}/>
+							<ProtectedRoute path='/category/gardening' component={Gardening}/>
+							<ProtectedRoute path='/chat/' component={ChatPage}/>
 							<ProtectedRoute path='/edit/post/:id' component={EditPost}/>
 							<ProtectedRoute path='/mypostings' component={MyAdPosts}/>
 							<ProtectedRoute path='/add/posts' component={AddPost}/>

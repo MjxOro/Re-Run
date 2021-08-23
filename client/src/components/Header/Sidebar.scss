@@ -86,7 +86,7 @@
 		color: $white;
 		height: 3rem;
 		border-bottom: 1px solid $white;
-		&:nth-child(5){
+		&:nth-child(4){
 			@include desktop{
 				display:none;
 			}

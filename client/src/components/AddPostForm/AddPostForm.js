@@ -5,6 +5,7 @@ import { FaArrowRight,FaArrowLeft } from 'react-icons/fa'
 
 const AddPostForm = (props) =>{
 
+	console.log(props.previewImg)
 	return(
 		<section className='add'>
 			<form onSubmit={props.handleUpload} className='add__container'>
@@ -31,7 +32,7 @@ const AddPostForm = (props) =>{
 					<input onChange={props.handleChange} className='add__input' name='location' />
 
 					<label className='add__label'>Category</label>
-					<select id='category' className='add__input add__input--select'  name='category' >
+					<select onChange={props.handleChange} id='category' className='add__input add__input--select'  name='category' >
 						<option value="electronics">Electronics</option>
 						<option value="clothing">Clothing</option>
 						<option value="general">General</option>

@@ -13,8 +13,9 @@ const adPostSchema = new mongoose.Schema(
 			type: Boolean,
 			required: true,
 		},
-		catagory: {
-			trype: String,
+		category: {
+			type: String,
+			required: true,
 		},
 		description: {
 			type: String,
@@ -26,7 +27,7 @@ const adPostSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		owner: {
+		userId: {
 			type: String,
 			required: true,
 		}

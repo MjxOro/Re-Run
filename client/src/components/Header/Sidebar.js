@@ -13,10 +13,9 @@ const Sidebar = (props) => {
 						<CloseButton onClick={props.close} className='sidebar__close-icon'/>
 					</div>
 					<div className='sidebar__link-container'>
-						<Link className='sidebar__link'>Home</Link>
-						<Link className='sidebar__link'>Category</Link>
-						<Link className='sidebar__link'>About</Link>
-						<Link className='sidebar__link'>Profile</Link>
+						<Link to='/' className='sidebar__link'>Home</Link>
+						<Link to='/' className='sidebar__link'>Category</Link>
+						<Link to='/chat' className='sidebar__link'>Chat</Link>
 						<Link to='/mypostings' className='sidebar__link'>My Postings</Link>
 						<div className='sidebar__link'>
 							<FiLogOut onClick={props.handleLogout} className='sidebar__logout'/>
@@ -35,8 +34,7 @@ const Sidebar = (props) => {
 					<div className='sidebar__link-container'>
 						<Link className='sidebar__link'>Home</Link>
 						<Link className='sidebar__link'>Category</Link>
-						<Link className='sidebar__link'>About</Link>
-						<Link className='sidebar__link'>Profile</Link>
+						<Link className='sidebar__link'>Chat</Link>
 						<Link  className='sidebar__link'>My Postings</Link>
 						<div className='sidebar__link'>
 							<FiLogOut className='sidebar__logout'/>

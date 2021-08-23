@@ -55,19 +55,34 @@ class EditPost extends React.Component {
 		formData.append("category",!this.state.category ? 'null' : this.state.category)
 		formData.append("description",!this.state.description ? 'null' : this.state.description)
 		formData.append("premium",!this.state.premium ? 'null' : this.state.premium)
+	if(!formData.premium){
+			axios.put(process.env.REACT_APP_API_URL + '/secure/edit/post/' + this.props.match.params.id, formData,{
+				headers: {
+					authorization: `Bearer ${token}`,
+					"Content-Type": "multipart/form-data",
+				}
+			})
+			.then(res =>{
+				console.log(res)
 
-		axios.put(process.env.REACT_APP_API_URL + '/secure/edit/post/' + this.props.match.params.id, formData,{
-			headers: {
-				authorization: `Bearer ${token}`,
-				"Content-Type": "multipart/form-data",
-			}
+			})
+			.catch(err =>{console.log(err)})
+
+			this.props.history.push('/')
+	}
+	else {
+		axios.put(process.env.REACT_APP_API_URL + '/secure/remove/points',{},{headers: {authorization: `Bearer ${token}`}})
+		.then((res) =>{
+			return(axios.put(process.env.REACT_APP_API_URL + '/secure/edit/post/' + this.props.match.params.id, formData,{headers: {authorization: `Bearer ${token}`,	"Content-Type": "multipart/form-data",}}))
 		})
-		.then(res =>{console.log(res)})
-		.catch(err =>{console.log(err)})
-
-		this.props.history.push('/')
+	.then(res =>{
+	})
+	.catch(err =>{
+		console.log(err)
+	})
 	}
 	
+}
 
 	
 
