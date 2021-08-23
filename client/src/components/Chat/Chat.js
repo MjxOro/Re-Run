@@ -1,9 +1,7 @@
-import { SendBirdProvider, ChannelList, Channel } from 'sendbird-uikit'
 import 'sendbird-uikit/dist/index.css'
 import { App as SendBirdApp } from "sendbird-uikit";
 import "sendbird-uikit/dist/index.css";
 import './Chat.scss'
-import { FaArrowLeft } from 'react-icons/fa'
 
 
 const myColorSet = {
@@ -18,7 +16,7 @@ const Chat = (props) => {
     return (
 			<div className='chat'>
         <SendBirdApp
-						appId={process.env.REACT_APP_SENDBIRD_API}    // Specify your Sendbird application ID.
+						appId={process.env.REACT_APP_SENDBIRD_APP_KEY}    // Specify your Sendbird application ID.
 						userId={props.currentUser._id}    // Specify your user ID.
 						colorSet={myColorSet}
 						nickname={props.currentUser.username}
