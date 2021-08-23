@@ -7,7 +7,6 @@ import { motion } from 'framer-motion'
 
 const Hero = (props) =>{
 	let index = props.index;
-	const history = useHistory()
 
 
 	//Animation VARS
@@ -24,10 +23,6 @@ const Hero = (props) =>{
 				transition={transition}
 				/>
 				</Link>
-				<motion.div exit={{opacity:0}} transition={transition} className='hero__searchbar'>
-					<input name='search' className='hero__search'/>
-					<BsSearch className='hero__btn'/>
-				</motion.div>
 				<motion.div exit={{opacity:0}} transition={transition} className='hero__category-container'>
 					<Link to='/category/electronics' className='hero__category'>Tech</Link>
 					<Link to='/category/clothing' className='hero__category hero__category--one'>Clothing</Link>

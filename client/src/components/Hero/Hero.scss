@@ -36,70 +36,18 @@
 			margin: 0 auto;
 		}
 	}
-	&__searchbar{ //DONE
-		width: 100vw;
-		display: flex;
-		align-items: center;
-		position: absolute;
-		justify-content: center;
-		z-index: 1;
-		top: 5rem;
-		pointer-events: none;
-		@include tablet{
-			top: 8rem;
-		}
-	}
-	&__search{ //DONE
-		pointer-events: all;
-		outline: none;
-		width: 50%;
-		max-width: 475px;
-		height: 2rem;
-		align-self: center;
-		margin: 1rem 0;
-		border-radius: 1rem 0 0 1rem;
-		border: 2px solid grey;
-		border-right: none;
-		padding: 0 1rem;
-		&:focus{
-			outline:none;
-			border: 2px solid $light-mint;
-			border-right: none;
-		}
-		@include tablet{
-			height: 3rem;
-			max-width: 1080px;
-		}
-	}
-	&__btn{ //DONE
-		pointer-events: all;
-		outline: none;
-		cursor: pointer;
-		height: 2rem;
-		width: 1.75rem;
-		padding: 0.25rem;
-		border: 2px solid $light-mint;
-		border-left: none;
-		background-color: $light-mint;
-		border-radius: 0 1rem 1rem 0;
-		@include tablet{
-			padding: 0.75rem;
-			height: 2.8rem;
-			width: 2.8rem;
-		}
-	}
 
 	&__category-container{ 
 		position: absolute;
 		width: 100vw;
-		top: 9rem;
+		top: 7rem;
 		pointer-events: none;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
 		z-index:0;
 		@include tablet{
-			top: 13rem;
+			top: 10rem;
 		}
 		@include desktop{
 			justify-content: center;
