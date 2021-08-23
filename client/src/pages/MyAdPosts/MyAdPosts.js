@@ -41,19 +41,19 @@ class MyAdPosts extends React.Component{
 	componentDidUpdate = async (prevProps, prevState) =>{
 
 	}
-	handleDelete = () =>{
+	handleDelete = async () =>{
 		console.log(this.props.match)
 		const token = sessionStorage.getItem("token")
-		axios.delete(process.env.REACT_APP_API_URL + '/secure/delete/post/' + this.state.postId,{
+		 await axios.delete(process.env.REACT_APP_API_URL + '/secure/delete/post/' + this.state.postId,{
 			headers: {
 				authorization: `Bearer ${token}`,
-				"Content-Type": "multipart/form-data",
 			}
 		})
 		.then(res =>{
 			console.log(res)
 		})
 		.catch(err =>{console.log(err)})
+
 		this.props.history.go(0)
 
 		

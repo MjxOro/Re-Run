@@ -1,0 +1,97 @@
+@use '../../partials/vairables' as *;
+@use '../../partials/mixins' as *;
+@use '../../partials/globals';
+
+.chat{
+	display:flex;
+	flex-direction: column;
+}
+.sendbird-app__wrap {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	box-sizing: border-box;
+	flex-direction: column;
+	margin: 0;
+}
+
+.sendbird-app__channellist-wrap{
+	width:100vw;
+	margin: 0;
+}
+.sendbird-app__wrap .sendbird-app__channellist-wrap {
+	max-width: 1440px;
+	@include tablet{
+		max-width: 20rem;
+
+	}
+}
+.sendbird-app__wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 0;
+		@include tablet{
+			flex-direction: row;
+		}
+}
+.sendbird-channel-list {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+}
+.sendbird-conversation__scroll-container {
+	display: flex;
+	height: 40vh;
+	overflow-y: auto;
+	overflow-x: hidden;
+	flex-direction: column;
+	@include tablet{
+		height: 50vh;
+	}
+	@include desktop{
+		height: 60vh;
+	}
+}
+//=====================================================SDK STUFFS
+.sendbird-channel-list__header { //USERNAME AND ID HERE
+	background-color:$dark-navy;
+	height: 64px;
+	min-height: 64px;
+}
+.sendbird-channel-list__body {
+    flex: 1 1;
+    -ms-flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+		background-color: $mint;
+}
+.sendbird-theme--light .sendbird-channel-header {
+	width: 100%;
+	border-bottom: 1px solid var(--sendbird-light-onlight-04);
+	background-color: $mint;
+}
+.sendbird-theme--light .sendbird-channel-preview { //NEUTRAL STATE OF CHANNEL
+	width: 100%;
+	margin: auto;
+	border-bottom: solid 1px var(--sendbird-light-onlight-04);
+	background-color: $white;
+	border-left: solid 4px grey;
+	&:hover{
+		background-color: $mint;
+	}
+}
+.sendbird-theme--light .sendbird-channel-preview--active { //CHOSEN STATE
+	width: 100%;
+	margin: auto;
+	border-left: solid 4px grey;
+	border-bottom: solid 1px var(--sendbird-light-onlight-04);
+	background-color: $light-mint;
+	&:hover{
+		border-left: grey;
+	}
+}

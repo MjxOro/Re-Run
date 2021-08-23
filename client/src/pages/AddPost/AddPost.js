@@ -33,15 +33,16 @@ class AddPost extends React.Component {
 	}
 	handleChange = (e) =>{
 		this.setState({ postInfo:{ ...this.state.postInfo, [e.target.name]: e.target.value }})
-		console.log([e.target.name],[e.target.value],[e.target.files])
+		console.log(e.target.value)
 		console.log(this.state.postInfo)
 	}
 	handleChangeImg = (e) =>{
-		console.log(e.target.files)
+		console.log("WORING")
 		this.setState({
 			files: e.target.files[0],
 			previewImg: URL.createObjectURL(e.target.files[0])
 		})
+		console.log(this.state.previewImg)
 	}
 	handleUpload = (e) =>{
 		e.preventDefault()

@@ -4,14 +4,16 @@ import Hero from '../../components/Hero/Hero'
 import MainContent from '../../components/MainContent/MainContent'
 import { Route } from 'react-router-dom'
 import axios from 'axios'
-import fillerData from '../../'
+import Chat from '../../components/Chat/Chat'
 
-class MainPage extends React.Component{
+class ChatPage extends React.Component{
 	state = {
 		index: 0,
 		currentUser: null,
 		allPost: null,
-		premiumPosts: [],
+		show: false,
+		channelLink: "",
+
 	}
 	componentDidMount = () =>{
 		const token = sessionStorage.getItem("token")
@@ -26,51 +28,53 @@ class MainPage extends React.Component{
 		})
 		.then(res =>{
 			console.log(res.data)
-			const premium = res.data.filter(post => {return post.premium === true})
-			console.log(premium)
-			const premiumIndex = Math.floor(premium.length / 2)
-			this.setState({
-				allPost: res.data,
-				premiumPosts: premium,
-				index: premiumIndex,
-			})
+			this.setState({allPost: res.data})
 		})
 		.catch(err =>{
 			console.log(err)
 		})
+		
+		const sendBirdHeader = { header: { "Content-Type": "application/json; charset=utf8", "Api-Token": process.env.SENDBIRD_KEY}}
+
+
+		
 	}
 	componentDidUpdate = (prevProps, prevState) =>{
 	
 
 	}
-
-	handleSlideLeft = () =>{
-		if(this.state.index > -1){
-			this.setState({index: this.state.index - 1})
+	getUrl = (data) =>{
+		console.log(data)
+		if(data){
+			this.setState({
+				channelLink: data.url,
+				show: true,
+			})
 		}
 
 	}
-	handleSlideRight = () =>{
-		if(this.state.index < this.state.premiumPosts.length){
-			this.setState({index: this.state.index + 1})
-		}
+	handleGoback = () =>{
+		this.setState({
+			show: false,
+		})
 
 	}
+
+
 
 	render = () =>{
 		return(
 			<>
-				{this.state.currentUser && this.state.allPost && this.state.premiumPosts && this.state.index > -1 &&
+				{this.state.currentUser && this.state.allPost && 
 					<>
 					<Route  render ={ (routerProps)=>
 						<Header currentUser={this.state.currentUser} {...routerProps} />
 					}/>
-					<Hero data={!this.state.premium ? this.state.allPost : this.state.premium} index={this.state.index} slideRight={this.handleSlideRight} slideLeft={this.handleSlideLeft}/>
-					<MainContent data={this.state.allPost} />
+					<Chat handleGoback={this.handleGoback} show={this.state.show} getUrl={this.getUrl} channelLink={this.state.channelLink} currentUser={this.state.currentUser} />
 					</>
 				}
 			</>
 		)
 	}
 }
-export default MainPage
+export default ChatPage

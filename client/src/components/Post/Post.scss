@@ -34,28 +34,39 @@
 		}
 	}
 	
-	&__form{
-	}
-	&__controls{
-		position: absolute;
-		z-index: 2;
-		top: 10rem;
-		pointer-events: none;
-		flex-grow: 1;
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-end;
-		height: 3rem;
-		width: 100%;
-		pointer-events: none;
+	&__userChat{
+		&>p{pointer-events: none;}
+		padding: 0.5rem;
+		display:flex;
+		height: 4rem;
+		justify-content: center;
+		align-items: center;
+		border-radius: 1rem;
+		background-color: $light-mint;
 		@include tablet{
-			top: 25rem;
+			padding: 0 2rem;
+			justify-content: flex-start;
+			height: 6rem;
+			width: 80%;
+			max-width: 768px;
 		}
-		@include desktop{
-			top: 30rem;
+	}
+	&__pfp{
+		height: 3rem;
+		width: 3rem;
+		background-color: $white;
+		border-radius: 50%;
+		margin-right: 1rem;
+		@include tablet{
+			height: 5rem;
+			width: 5rem;
 		}
-		@include desktop-break{
-			justify-content: center;
+	}
+	&__chat-text{
+		color: $white;
+		font-size: 1.25rem;
+		@include tablet{
+			font-size: 2.5rem;
 		}
 	}
 	&__next{
@@ -88,10 +99,10 @@
 		}
 	}
 	&__text-container{
-		pointer-events: none;
+		pointer-events: all;
 		position:absolute;
 		width: 100%;
-		top: 30rem;
+		top: 21rem;
 		padding: 0 1rem;
 		z-index: 2;
 		display: flex;
@@ -108,13 +119,32 @@
 	}
 
 	&__title{
+		text-align: center;
 		color: $white;
 		margin: 0;
+		margin-bottom: 2rem;
+		font-size: 2rem;
+		@include tablet{
+			font-size: 4rem;
+		}
 	}
 
 	&__price{
 		color: $white;
 		margin: 0;
+		font-size: 1rem;
+		margin-bottom: 1rem;
+		@include tablet{
+			font-size: 2rem;
+		}
+	}
+	&__maps-label{
+		color: $white;
+		margin-top: 8rem;
+		font-size: 2rem;
+		@include tablet{
+			font-size: 4rem;
+		}
 	}
 }
 
