@@ -5,6 +5,7 @@ import { FaArrowRight,FaArrowLeft } from 'react-icons/fa'
 
 const AddPostForm = (props) =>{
 
+	console.log(props.previewImg)
 	return(
 		<section className='add'>
 			<form onSubmit={props.handleUpload} className='add__container'>

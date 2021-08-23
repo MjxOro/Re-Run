@@ -3,6 +3,7 @@ const User = require("../../models/users");
 const AdPost = require("../../models/adPosts")
 const multer = require("multer") 
 const upload = multer({dest: "public/"})
+const axios = require("axios")
 const fs = require("fs")
 
 router.get("/current/user", async (req, res) => {
@@ -65,7 +66,7 @@ router.put("/upload/pfp",upload.single("image"), async (req,res) =>{
 //Create an Posting
 router.post("/add/post",upload.single('image'), async(req,res) =>{
 
-	const imgUrl = req.file ? process.env.SERVER_URL + req.file.filename : process.env.SERVER_URL + 'null'
+	const imgUrl = req.file ? process.env.SERVER_URL + req.file.filename : process.env.SERVER_URL 
 	const {title, price, location, category, description, premium} = req.body
 	const adPost =  new AdPost({
 		image: imgUrl,
@@ -145,6 +146,54 @@ router.get("/all/postings", async (req, res) => {
     res.status(500).json({ error: e.toString() });
   }
 });
+// Create Chat Room
+router.post("/create/chat", async (req,res) =>{
+	
+	try{
+		const sendData = {...req.body}
+		const sendBirdHeader = { headers: { "Content-Type": "application/json; charset=utf8", "Api-Token": process.env.SENDBIRD_API_KEY}}
+		await axios.post(`https://api-${process.env.SENDBIRD_APP_KEY}.sendbird.com/v3/group_channels`,sendData,sendBirdHeader)
+		.then(res =>{
+			console.log(res)
+			const messageData = {
+				message_type: "ADMM",
+				meesage: "Welcome!",
+			}
+			return(axios.post(`https://api-${process.env.SENDBIRD_APP_KEY}.sendbird.com/v3/group_channels/${res.data.channel_url}/messages`,messageData,sendBirdHeader))
+		})
+		.then(post =>{
+			console.log(post)
+		})
+		.catch(err=>{
+		})
+			res.status(201).json({message: "Created ChatRoom"})
+	}
+	catch{
+		res.status(400).json({message: "DID NOT CREATE"})
+	}
+
+
+})
+//GET USERS CHAT CHANNELS
+router.get("/get/chat", async (req,res) =>{
+
+	try{
+		const sendBirdHeader = { headers: { "Content-Type": "application/json; charset=utf8", "Api-Token": process.env.SENDBIRD_API_KEY}}
+		await axios.get(`https://api-${process.env.SENDBIRD_APP_KEY}.sendbird.com/v3/users/${req.decoded._id}/my_group_channels`,sendBirdHeader)
+		.then(chat =>{
+			console.log(res)
+			res.status(201).json(chat.data)
+		})
+		.catch(err=>{
+			console.log(err)
+		})
+	}
+	catch{
+		res.status(400).json({message: "Couldnt Get"})
+		console.log("BRUH")
+	}
+
+})
 
 module.exports = router;
 

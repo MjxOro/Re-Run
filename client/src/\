@@ -21,21 +21,6 @@
 }
 .sendbird-app__wrap .sendbird-app__channellist-wrap {
 	max-width: 1440px;
-	@include tablet{
-		max-width: 20rem;
-
-	}
-}
-.sendbird-app__wrap {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    margin: 0;
-		@include tablet{
-			flex-direction: row;
-		}
 }
 .sendbird-channel-list {
 	width: 100%;
@@ -43,18 +28,8 @@
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
-}
-.sendbird-conversation__scroll-container {
-	display: flex;
-	height: 40vh;
-	overflow-y: auto;
-	overflow-x: hidden;
-	flex-direction: column;
 	@include tablet{
-		height: 50vh;
-	}
-	@include desktop{
-		height: 60vh;
+		flex-direction: row ;
 	}
 }
 //=====================================================SDK STUFFS
@@ -68,7 +43,7 @@
     -ms-flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
-		background-color: $mint;
+		background-color: $dark-navy;
 }
 .sendbird-theme--light .sendbird-channel-header {
 	width: 100%;

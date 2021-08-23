@@ -11,8 +11,8 @@ class ChatPage extends React.Component{
 		index: 0,
 		currentUser: null,
 		allPost: null,
-		channelLink: "",
 		show: false,
+		channelLink: "",
 
 	}
 	componentDidMount = () =>{
@@ -43,12 +43,14 @@ class ChatPage extends React.Component{
 	
 
 	}
-	getUrl = (url) =>{
-		console.log(url)
-		this.setState({
-			channelLink: url,
-			show: true,
-		})
+	getUrl = (data) =>{
+		console.log(data)
+		if(data){
+			this.setState({
+				channelLink: data.url,
+				show: true,
+			})
+		}
 
 	}
 	handleGoback = () =>{

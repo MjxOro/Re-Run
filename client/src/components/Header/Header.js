@@ -55,7 +55,7 @@ class Header extends react.Component {
 		},2300)
 
   }
-	handleChangeImg = (e) =>{
+	handleChangePfp = (e) =>{
 		console.log(e.target.files)
 		this.setState({
 			files: e.target.files[0],
@@ -93,7 +93,7 @@ class Header extends react.Component {
 	render = () => {
 		return(
 			<>
-			<PfpModal show={this.state.showModal} close={this.handleModalClose} handleUpload={this.handleUpload} previewImg={this.state.previewImg} handleChangeImg={this.handleChangeImg} 
+			<PfpModal show={this.state.showModal} close={this.handleModalClose} handleUpload={this.handleUpload} previewImg={this.state.previewImg} handleChangePfp={this.handleChangePfp} 
 />
 			{this.props.currentUser && (
 			<header className='hd'>

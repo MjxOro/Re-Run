@@ -41,6 +41,15 @@ class PostPage extends React.Component{
 			console.log(err)
 		})
 	}
+	getChatCreation = (data) =>{
+		const token = sessionStorage.getItem("token")
+		axios.post(process.env.REACT_APP_API_URL + '/secure/create/chat',data,{headers:{authorization: `Bearer ${token}`}})
+		.then(res =>{
+			console.log(res)
+			this.props.history.push("/chat")
+		})
+
+	}
 	
 
 	render = () =>{
@@ -51,7 +60,7 @@ class PostPage extends React.Component{
 				<Route  render ={(routerProps)=>
 					<Header currentUser={this.state.currentUser} {...routerProps} />
 				}/>
-				<Post allUsers={this.state.allUsers} currentUser={this.state.currentUser} data={this.state.filterPost} index={this.state.index} />
+				<Post getChatCreation={this.getChatCreation} allUsers={this.state.allUsers} currentUser={this.state.currentUser} data={this.state.filterPost} index={this.state.index} />
 				<SimpleMap/>
 				</>
 				}

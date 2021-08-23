@@ -16,26 +16,14 @@ const myColorSet = {
 
 const Chat = (props) => {
     return (
-        <SendBirdProvider
+			<div className='chat'>
+        <SendBirdApp
 						appId={process.env.REACT_APP_SENDBIRD_API}    // Specify your Sendbird application ID.
 						userId={props.currentUser._id}    // Specify your user ID.
 						colorSet={myColorSet}
 						nickname={props.currentUser.username}
-        >
-					<main className='chat'>
-							<div className={!props.show ? 'chat__list' : 'chat__list chat__list--hidden'}>
-									<ChannelList
-									onChannelSelect={(channel) => { props.getUrl(channel.url) }}
-									/>
-							</div>
-							<div className={props.show ? 'chat__app' : 'chat__app chat__app--hidden'}>
-								<div className='chat__header'>
-									<FaArrowLeft onClick={props.handleGoback}className='chat__goback'/>
-								</div>
-								<Channel channelUrl={props.channelLink}/>
-							</div>
-					</main>
-        </SendBirdProvider>
+        />
+			</div>
   );
 };
 export default Chat

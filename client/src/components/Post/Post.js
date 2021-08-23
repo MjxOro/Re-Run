@@ -1,6 +1,7 @@
 import './Post.scss'
 import { motion } from 'framer-motion'
 import {FaAngleRight, FaAngleLeft} from 'react-icons/fa'
+import axios from 'axios'
 
 const Post = (props) => {
 	const index=props.index
@@ -62,6 +63,16 @@ const Post = (props) => {
 		ease: [0.6,0.01,-0.05,0.9],
 	}
 	const filteredUser = props.allUsers.find( user =>{ return user._id===props.data.userId})
+	const createChat = () =>{
+		const formData = {
+			user_ids: [props.currentUser._id,props.data.userId],
+			name: props.data.title,
+			cover_url: props.data.image,
+			is_distinct: "true",
+		}
+		props.getChatCreation(formData)
+
+	}
 	return(
 		<>
 		{ index === null ?
@@ -89,7 +100,7 @@ const Post = (props) => {
 						<p className='post__title'>{props.data.title}</p>
 						<p className='post__price'>{props.data.description}</p>
 						<p className='post__price'>{props.data.price}</p>
-						<div className='post__userChat'>
+						<div onClick={createChat} className='post__userChat'>
 							<img className='post__pfp' src={filteredUser.profilePicture} />
 							<p className='post__chat-text' >{"Interested? Message: " + filteredUser.username}</p>
 						</div>

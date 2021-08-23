@@ -15,10 +15,10 @@ const PfpModal = (props) =>{
 				</div>
 				<form onSubmit={props.handleUpload} className='pfp__image'>
 					<img src={props.previewImg} className='pfp__preview' / >
-					<label htmlFor='uploadImg' className='pfp__label-img'>
+					<label htmlFor='uploadPfp' className='pfp__label-img'>
 						<BiImageAdd className='pfp__upload-icon'/>
 					</label>
-					<input onChange={props.handleChangeImg} type='file' id='uploadImg' className='pfp__upload' name='image'  /> {/* display None */}
+					<input onChange={props.handleChangePfp} type='file' id='uploadPfp' className='pfp__upload' name='image'  /> {/* display None */}
 					<button  className='pfp__button'>Change Picture</button>
 				</form>
 			
