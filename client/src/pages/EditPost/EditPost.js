@@ -11,6 +11,7 @@ class EditPost extends React.Component {
 		currentUser: null,
 		previewImg: null,
 		files: null,
+		postInfo:{},
 
 
 	}
@@ -48,14 +49,16 @@ class EditPost extends React.Component {
 		e.preventDefault()
 		const token = sessionStorage.getItem("token")
 		const formData = new FormData()
-		formData.append("image",!this.state.files ? 'null' : this.state.files)
-		formData.append("title",!this.state.title ? 'null' : this.state.title)
-		formData.append("price",!this.state.price ? 'null' : this.state.price)
-		formData.append("location",!this.state.location ? 'null' : this.state.location)
-		formData.append("category",!this.state.category ? 'null' : this.state.category)
-		formData.append("description",!this.state.description ? 'null' : this.state.description)
-		formData.append("premium",!this.state.premium ? 'null' : this.state.premium)
-	if(!formData.premium){
+		formData.append("image",!this.state.files ? null : this.state.files)
+		formData.append("title",!this.state.postInfo.title ? null : this.state.postInfo.title)
+		formData.append("price",!this.state.postInfo.price ? null : this.state.postInfo.price)
+		formData.append("location",!this.state.postInfo.location ? null : this.state.postInfo.location)
+		formData.append("category",!this.state.postInfo.category ? null : this.state.postInfo.category)
+		formData.append("description",!this.state.postInfo.description ? null : this.state.postInfo.description)
+		formData.append("premium",!this.state.postInfo.premium ? null : this.state.postInfo.premium)
+
+	if(formData.get("premium") !== "true"){
+			console.log(formData.get("premium"))
 			axios.put(process.env.REACT_APP_API_URL + '/secure/edit/post/' + this.props.match.params.id, formData,{
 				headers: {
 					authorization: `Bearer ${token}`,
@@ -80,6 +83,7 @@ class EditPost extends React.Component {
 		.catch(err =>{
 			console.log(err)
 		})
+			this.props.history.push('/')
 	}
 	
 }

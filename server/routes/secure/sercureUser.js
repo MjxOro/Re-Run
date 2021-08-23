@@ -20,7 +20,7 @@ router.put("/add/points", async(req, res) =>{
 //
 router.put("/remove/points", async(req, res) =>{
 	try{
-		const user = await User.findOneAndUpdate({ _id: req.decoded._id },{$inc: {points: -1}})
+		const user = await User.findOneAndUpdate({ _id: req.decoded._id },{$inc: {points: -10}})
 		res.status(200).json(user)
 	}
 	catch(e){
