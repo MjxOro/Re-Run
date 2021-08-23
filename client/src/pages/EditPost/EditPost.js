@@ -72,14 +72,14 @@ class EditPost extends React.Component {
 	}
 	else {
 		axios.put(process.env.REACT_APP_API_URL + '/secure/remove/points',{},{headers: {authorization: `Bearer ${token}`}})
-		.then((res) =>{
-			return(axios.put(process.env.REACT_APP_API_URL + '/secure/edit/post/' + this.props.match.params.id, formData,{headers: {authorization: `Bearer ${token}`,	"Content-Type": "multipart/form-data",}}))
+			.then((res) =>{
+				return(axios.put(process.env.REACT_APP_API_URL + '/secure/edit/post/' + this.props.match.params.id, formData,{headers: {authorization: `Bearer ${token}`,	"Content-Type": "multipart/form-data",}}))
+			})
+		.then(res =>{
 		})
-	.then(res =>{
-	})
-	.catch(err =>{
-		console.log(err)
-	})
+		.catch(err =>{
+			console.log(err)
+		})
 	}
 	
 }

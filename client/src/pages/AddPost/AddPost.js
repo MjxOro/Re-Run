@@ -55,18 +55,34 @@ class AddPost extends React.Component {
 		formData.append("category",this.state.postInfo.category)
 		formData.append("description",this.state.postInfo.description)
 		formData.append("premium",this.state.postInfo.premium)
-
+	if(!formData.premium){
 		axios.post(process.env.REACT_APP_API_URL + '/secure/add/post', formData,{
 			headers: {
 				authorization: `Bearer ${token}`,
 				"Content-Type": "multipart/form-data",
 			}
 		})
-		.then(res =>{console.log(res)})
-		.catch(err =>{console.log(err)})
+			.then(res =>{
+				console.log(res)
 
-		this.props.history.push('/')
+			})
+			.catch(err =>{console.log(err)})
+
+			this.props.history.push('/')
 	}
+	else {
+		axios.post(process.env.REACT_APP_API_URL + '/secure/remove/points',{},{headers: {authorization: `Bearer ${token}`}})
+				.then((res) =>{
+					return(axios.post(process.env.REACT_APP_API_URL + '/secure/add/post', formData,{headers:{authorization: `Bearer ${token}`,"Content-Type": "multipart/form-data",}}))
+				})
+				.then(res =>{
+				})
+				.catch(err =>{
+					console.log(err)
+				})
+			this.props.history.push('/')
+	}
+}
 	
 
 	
@@ -89,3 +105,14 @@ class AddPost extends React.Component {
 }
 export default AddPost
 
+		axios.post(process.env.REACT_APP_API_URL + '/secure/add/post', formData,{
+			headers: {
+				authorization: `Bearer ${token}`,
+				"Content-Type": "multipart/form-data",
+			}
+		})
+		.then(res =>{console.log(res)})
+		.catch(err =>{console.log(err)})
+
+		this.props.history.push('/')
+	}
