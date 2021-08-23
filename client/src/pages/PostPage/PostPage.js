@@ -57,10 +57,8 @@ class PostPage extends React.Component{
 			sessionStorage.setItem("timer", (+ new Date ()))
 		}
 		else{
-			console.log("TIMER SET!")
 			const now = + new Date()
 			const timeCheck = now - timer
-			console.log(timeCheck,"TIME ON WEBSite")
 			if(timeCheck > 300000){
 				axios.put(process.env.REACT_APP_API_URL+'/secure/add/points',{},{headers: {authorization: `Bearer ${token}`}})
 				.then(()=>{
