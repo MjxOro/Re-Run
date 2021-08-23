@@ -4,7 +4,6 @@ import Hero from '../../components/Hero/Hero'
 import MainContent from '../../components/MainContent/MainContent'
 import { Route } from 'react-router-dom'
 import axios from 'axios'
-import fillerData from '../../'
 
 class MainPage extends React.Component{
 	state = {
@@ -38,6 +37,28 @@ class MainPage extends React.Component{
 		.catch(err =>{
 			console.log(err)
 		})
+
+		const timer = sessionStorage.getItem("timer")
+		if(!timer){
+			sessionStorage.setItem("timer", (+ new Date ()))
+		}
+		else{
+			console.log("TIMER SET!")
+			const now = + new Date()
+			const timeCheck = now - timer
+			console.log(timeCheck,"TIME ON WEBSite")
+			if(timeCheck > 300000){
+				axios.put(process.env.REACT_APP_API_URL+'/secure/add/points',{},{headers: {authorization: `Bearer ${token}`}})
+				.then(()=>{
+					sessionStorage.setItem("timer",(+ new Date ()))
+				})
+				.catch(err =>{
+					console.log(err)
+				})
+			}
+		}
+		console.log(sessionStorage.getItem("timer"))
+
 	}
 	componentDidUpdate = (prevProps, prevState) =>{
 	

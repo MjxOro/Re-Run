@@ -52,6 +52,7 @@ class Header extends react.Component {
 		this.props.history.push("/login")
 		setTimeout(()=>{
 			sessionStorage.removeItem("token")
+			sessionStorage.removeItem("timer")
 		},2300)
 
   }

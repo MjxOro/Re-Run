@@ -57,6 +57,7 @@ class AddPost extends React.Component {
 		formData.append("premium",this.state.postInfo.premium)
 
 	if(formData.get("premium") !== "true"){
+		console.log("BRUH")
 		axios.post(process.env.REACT_APP_API_URL + '/secure/add/post', formData,{
 			headers: {
 				authorization: `Bearer ${token}`,
