@@ -35,6 +35,8 @@
 		@include tablet{
 			margin-top: 8rem;
 			height: 40%;
+			max-width: 768px;
+			max-height: 18rem;
 
 		}
 		@include desktop{
@@ -124,8 +126,9 @@
 		pointer-events: none;
 		height: 2rem;
 		width: 2rem;
-		color: red;
+		color: $light-mint;
 		&--container{
+			padding: 1rem;
 			width: 100%;
 			pointer-events: all;
 			cursor: pointer;

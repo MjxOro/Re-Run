@@ -18,6 +18,7 @@ class PostPage extends React.Component{
 
 	}
 	componentDidMount = () =>{
+		window.scrollTo(0, 0);
 		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_KEY)
 		Geocode.setLocationType("APPROXIMATE")
 		const token = sessionStorage.getItem("token")

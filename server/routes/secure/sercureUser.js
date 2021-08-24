@@ -65,8 +65,9 @@ router.put("/upload/pfp",upload.single("image"), async (req,res) =>{
 	if(req.file){
 		const deleteImg = await User.findOne({_id: req.decoded._id})
 		if(deleteImg){
+			const checkUrl = deleteImg.profilePicture.split("/")
 			console.log("ID FOUND!")
-			if(deleteImg.profilePicture !== ""){
+			if(checkUrl[2] !== "ui-avatars.com"){
 				const imgId = deleteImg.profilePicture.split("/")
 				fs.unlinkSync(path.join("public/",imgId[imgId.length-1]),(err) =>{
 					if(err){
