@@ -10,6 +10,7 @@ const adPostRoutes = require('./routes/adPostRoutes')
 const AdPost = require('./models/adPosts')
 const secureUserRoutes = require('./routes/secure/sercureUser')
 const authorize = require("./middleware/authorize")
+const path = require("path");
 
 mongoose.connect(process.env.MONGODB_URL,{useNewUrlParser: true,useUnifiedTopology: true},() =>{
 	console.log('connected to DB')
