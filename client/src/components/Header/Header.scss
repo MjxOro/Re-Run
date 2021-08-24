@@ -38,6 +38,10 @@
 		color: $white;
 		margin-right: 3rem;
 		font-size: 24px;
+		cursor: pointer;
+		&:hover{
+			color: $light-mint;
+		}
 
 	}
 	&__logo{

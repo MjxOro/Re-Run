@@ -6,10 +6,55 @@ import { ImCross } from 'react-icons/im'
 import { FaArrowLeft } from 'react-icons/fa'
 
 const MyAds = (props) =>{
+	const container = {
+		show: {
+			transition: {
+				staggerChildren: 0.35,
+			},
+		},
+	};
+
+	const item = {
+		hidden: { opacity: 0, y: 200 },
+		show: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				ease: [0.6, 0.01, -0.05, 0.95],
+				duration: 1.6,
+			},
+		},
+		exit: {
+			opacity: 0,
+			y: -200,
+			transition: {
+				ease: "easeInOut",
+				duration: 0.8,
+			},
+		},
+	};
+
+	const itemMain = {
+		hidden: { opacity: 0, y: 200 },
+		show: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				ease: [0.6, 0.01, -0.05, 0.95],
+				duration: 1.6,
+			},
+		},
+	};
 
 
 	return(
-		<section className='myads'>
+		<motion.section
+		className='myads'
+		variants={container}
+		initial="hidden"
+		animate="show"
+		exit="exit"
+		>
 			<div className='myads__container'>
 				<div className='myads__header'>
 					<FaArrowLeft onClick={props.handleGoback}className='myads__goback'/>
@@ -18,7 +63,13 @@ const MyAds = (props) =>{
 				<main className='myads__grid'>
 			{
 				props.data.map(card =>(
-					<div  className='myads__card'>
+			<motion.div variants={itemMain}>
+					
+					<motion.div
+					className='myads__card'
+					whileHover={{scale:1.1}}
+					variants={item}
+					>
 						<img className='myads__img' src={card.image}/>
 						<div className='myads__info-container'>
 							<div className='myads__text-container'>
@@ -35,13 +86,14 @@ const MyAds = (props) =>{
 							</div>
 						</div>
 
-					</div>
+					</motion.div>
+			</motion.div>
 				))
 				
 			}
 			</main>
 			</div>
-		</section>
+		</motion.section>
 	)
 	
 }
