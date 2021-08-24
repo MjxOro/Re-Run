@@ -53,7 +53,7 @@ class SignUp extends React.Component{
 				this.setState({err: formErr})
 		}
 		else{
-			axios.post(process.env.REACT_APP_API_URL +'/users/register', this.state.userInfo)
+			axios.post((process.env.REACT_APP_API_URL || "") +'/users/register', this.state.userInfo)
 			.then(res =>{
 				sessionStorage.setItem("token", res.data.token)
 				this.props.history.push("/login")

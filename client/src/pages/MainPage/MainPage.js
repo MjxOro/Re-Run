@@ -14,14 +14,14 @@ class MainPage extends React.Component{
 	}
 	componentDidMount = () =>{
 		const token = sessionStorage.getItem("token")
-		axios.get(process.env.REACT_APP_API_URL+'/secure/current/user', {
+		axios.get((process.env.REACT_APP_API_URL || "")+'/secure/current/user', {
 			headers: {
 				authorization: `Bearer ${token}`,
 			}
 		})
 		.then(res =>{
 			this.setState({currentUser: res.data})
-			return (axios.get(process.env.REACT_APP_API_URL+'/secure/all/postings',{headers:{authorization: `Bearer ${token}`}}))
+			return (axios.get((process.env.REACT_APP_API_URL || "")+'/secure/all/postings',{headers:{authorization: `Bearer ${token}`}}))
 		})
 		.then(res =>{
 			console.log(res.data)
@@ -46,7 +46,7 @@ class MainPage extends React.Component{
 			const now = + new Date()
 			const timeCheck = now - timer
 			if(timeCheck > 300000){
-				axios.put(process.env.REACT_APP_API_URL+'/secure/add/points',{},{headers: {authorization: `Bearer ${token}`}})
+				axios.put((process.env.REACT_APP_API_URL || "")+'/secure/add/points',{},{headers: {authorization: `Bearer ${token}`}})
 				.then(()=>{
 					sessionStorage.setItem("timer",(+ new Date ()))
 				})

@@ -21,7 +21,7 @@ class PostPage extends React.Component{
 		Geocode.setApiKey(process.env.REACT_APP_GOOGLE_KEY)
 		Geocode.setLocationType("APPROXIMATE")
 		const token = sessionStorage.getItem("token")
-		axios.get(process.env.REACT_APP_API_URL+'/secure/current/user', {
+		axios.get((process.env.REACT_APP_API_URL || "")+'/secure/current/user', {
 			headers: {
 				authorization: `Bearer ${token}`,
 			}
@@ -29,13 +29,13 @@ class PostPage extends React.Component{
 		.then(res =>{
 			console.log(res.data)
 			this.setState({currentUser: res.data})
-			return (axios.get(process.env.REACT_APP_API_URL+'/secure/all/postings',{headers:{authorization: `Bearer ${token}`}}))
+			return (axios.get((process.env.REACT_APP_API_URL || "")+'/secure/all/postings',{headers:{authorization: `Bearer ${token}`}}))
 		})
 		.then(res =>{
 			const filtered = res.data.find(post =>{return post._id === this.props.match.params.id})
 			console.log(filtered)
 			this.setState({filterPost: filtered})
-			return (axios.get(process.env.REACT_APP_API_URL + '/secure/all/users',{headers:{authorization: `Bearer ${token}`}}))
+			return (axios.get((process.env.REACT_APP_API_URL || "") + '/secure/all/users',{headers:{authorization: `Bearer ${token}`}}))
 		})
 		.then(res =>{
 			console.log(res.data)
@@ -60,7 +60,7 @@ class PostPage extends React.Component{
 			const now = + new Date()
 			const timeCheck = now - timer
 			if(timeCheck > 300000){
-				axios.put(process.env.REACT_APP_API_URL+'/secure/add/points',{},{headers: {authorization: `Bearer ${token}`}})
+				axios.put((process.env.REACT_APP_API_URL || "")+'/secure/add/points',{},{headers: {authorization: `Bearer ${token}`}})
 				.then(()=>{
 					sessionStorage.setItem("timer",(+ new Date ()))
 				})
@@ -73,7 +73,7 @@ class PostPage extends React.Component{
 	}
 	getChatCreation = (data) =>{
 		const token = sessionStorage.getItem("token")
-		axios.post(process.env.REACT_APP_API_URL + '/secure/create/chat',data,{headers:{authorization: `Bearer ${token}`}})
+		axios.post((process.env.REACT_APP_API_URL || "") + '/secure/create/chat',data,{headers:{authorization: `Bearer ${token}`}})
 		.then(res =>{
 			console.log(res)
 			this.props.history.push("/chat")

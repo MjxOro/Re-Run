@@ -17,7 +17,7 @@ class AddPost extends React.Component {
 	}
 	componentDidMount = () => {
 		const token = sessionStorage.getItem("token")
-		axios.get(process.env.REACT_APP_API_URL+'/secure/current/user', {
+		axios.get((process.env.REACT_APP_API_URL || "")+'/secure/current/user', {
 			headers: {
 				authorization: `Bearer ${token}`,
 			}
@@ -58,7 +58,7 @@ class AddPost extends React.Component {
 
 	if(formData.get("premium") !== "true"){
 		console.log("BRUH")
-		axios.post(process.env.REACT_APP_API_URL + '/secure/add/post', formData,{
+		axios.post((process.env.REACT_APP_API_URL || "") + '/secure/add/post', formData,{
 			headers: {
 				authorization: `Bearer ${token}`,
 				"Content-Type": "multipart/form-data",
@@ -73,9 +73,9 @@ class AddPost extends React.Component {
 			this.props.history.push('/')
 	}
 	else {
-		axios.put(process.env.REACT_APP_API_URL + '/secure/remove/points',{},{headers: {authorization: `Bearer ${token}`}})
+		axios.put((process.env.REACT_APP_API_URL || "") + '/secure/remove/points',{},{headers: {authorization: `Bearer ${token}`}})
 				.then((res) =>{
-					return(axios.post(process.env.REACT_APP_API_URL + '/secure/add/post', formData,{headers:{authorization: `Bearer ${token}`,"Content-Type": "multipart/form-data",}}))
+					return(axios.post((process.env.REACT_APP_API_URL || "") + '/secure/add/post', formData,{headers:{authorization: `Bearer ${token}`,"Content-Type": "multipart/form-data",}}))
 				})
 				.then(res =>{
 				})

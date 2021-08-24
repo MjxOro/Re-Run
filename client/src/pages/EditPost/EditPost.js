@@ -17,7 +17,7 @@ class EditPost extends React.Component {
 	}
 	componentDidMount = () => {
 		const token = sessionStorage.getItem("token")
-		axios.get(process.env.REACT_APP_API_URL+'/secure/current/user', {
+		axios.get((process.env.REACT_APP_API_URL || "")+'/secure/current/user', {
 			headers: {
 				authorization: `Bearer ${token}`,
 			}
@@ -59,7 +59,7 @@ class EditPost extends React.Component {
 
 	if(formData.get("premium") !== "true"){
 			console.log(formData.get("premium"))
-			axios.put(process.env.REACT_APP_API_URL + '/secure/edit/post/' + this.props.match.params.id, formData,{
+			axios.put((process.env.REACT_APP_API_URL || "") + '/secure/edit/post/' + this.props.match.params.id, formData,{
 				headers: {
 					authorization: `Bearer ${token}`,
 					"Content-Type": "multipart/form-data",
@@ -74,9 +74,9 @@ class EditPost extends React.Component {
 			this.props.history.push('/')
 	}
 	else {
-		axios.put(process.env.REACT_APP_API_URL + '/secure/remove/points',{},{headers: {authorization: `Bearer ${token}`}})
+		axios.put((process.env.REACT_APP_API_URL || "") + '/secure/remove/points',{},{headers: {authorization: `Bearer ${token}`}})
 			.then((res) =>{
-				return(axios.put(process.env.REACT_APP_API_URL + '/secure/edit/post/' + this.props.match.params.id, formData,{headers: {authorization: `Bearer ${token}`,	"Content-Type": "multipart/form-data",}}))
+				return(axios.put((process.env.REACT_APP_API_URL || "") + '/secure/edit/post/' + this.props.match.params.id, formData,{headers: {authorization: `Bearer ${token}`,	"Content-Type": "multipart/form-data",}}))
 			})
 		.then(res =>{
 		})

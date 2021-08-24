@@ -16,7 +16,7 @@ class LandingPage extends react.Component{
 
 	componentDidMount = () =>{
 		//Gets data from server to load the animated cards of whats being sold.
-		axios.get(process.env.REACT_APP_API_URL +'/preview')
+		axios.get((process.env.REACT_APP_API_URL || "") +'/preview')
 		.then(res =>{
 			this.setState({postCards: res.data})
 		})

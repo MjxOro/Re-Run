@@ -29,7 +29,7 @@ class Header extends react.Component {
 		formData.append("description",!this.state.description ? 'null' : this.state.description)
 		formData.append("premium",!this.state.premium ? 'null' : this.state.premium)
 
-		axios.put(process.env.REACT_APP_API_URL + '/secure/edit/post/' + this.props.match.params.id, formData,{
+		axios.put((process.env.REACT_APP_API_URL || "") + '/secure/edit/post/' + this.props.match.params.id, formData,{
 			headers: {
 				authorization: `Bearer ${token}`,
 				"Content-Type": "multipart/form-data",
@@ -69,7 +69,7 @@ class Header extends react.Component {
 		const formData = new FormData()
 		formData.append("image",!this.state.files ? 'null' : this.state.files)
 
-		axios.put(process.env.REACT_APP_API_URL + '/secure/upload/pfp/', formData,{
+		axios.put((process.env.REACT_APP_API_URL || "") + '/secure/upload/pfp/', formData,{
 			headers: {
 				authorization: `Bearer ${token}`,
 				"Content-Type": "multipart/form-data",

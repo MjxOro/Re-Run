@@ -21,14 +21,14 @@ class MyAdPosts extends React.Component{
 	componentDidMount = () =>{
 		this.setState({index: this.props.match.params.id-1})
 		const token = sessionStorage.getItem("token")
-		axios.get(process.env.REACT_APP_API_URL+'/secure/current/user', {
+		axios.get((process.env.REACT_APP_API_URL || "")+'/secure/current/user', {
 			headers: {
 				authorization: `Bearer ${token}`,
 			}
 		})
 		.then(res =>{
 			this.setState({currentUser: res.data})
-			return (axios.get(process.env.REACT_APP_API_URL+'/secure/user/posts',{headers: {authorization: `Bearer ${token}`}}))
+			return (axios.get((process.env.REACT_APP_API_URL || "")+'/secure/user/posts',{headers: {authorization: `Bearer ${token}`}}))
 		})
 		.then(res => {
 			console.log(res.data)
@@ -44,7 +44,7 @@ class MyAdPosts extends React.Component{
 	handleDelete = async () =>{
 		console.log(this.props.match)
 		const token = sessionStorage.getItem("token")
-		 await axios.delete(process.env.REACT_APP_API_URL + '/secure/delete/post/' + this.state.postId,{
+		 await axios.delete((process.env.REACT_APP_API_URL || "") + '/secure/delete/post/' + this.state.postId,{
 			headers: {
 				authorization: `Bearer ${token}`,
 			}
