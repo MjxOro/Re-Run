@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/public'));
 app.use('/preview',adPostRoutes)
 app.use('/users',userRoutes)
 app.use("/secure", authorize, secureUserRoutes);
