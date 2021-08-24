@@ -13,13 +13,21 @@ const authorize = require("./middleware/authorize")
 
 app.use(cors())
 app.use(express.json())
-app.use(morgan('dev'))
+app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"))
 
 
 app.use(express.static(__dirname + '/public'));
 app.use('/preview',adPostRoutes)
 app.use('/users',userRoutes)
 app.use("/secure", authorize, secureUserRoutes);
+
+if(process.env.NODE_ENV === "production" ){
+	 app.get("*", (req,res) =>{
+		 response.sendFile(
+			 path.resolve(__dirname, "..", "client", "build", "index.html" )
+		 );
+	 })
+}
 
 
 
