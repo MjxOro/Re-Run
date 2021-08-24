@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve(__dirname, "..", "client", "build")));
 }
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/preview',adPostRoutes)
 app.use('/users',userRoutes)
 app.use("/secure", authorize, secureUserRoutes);

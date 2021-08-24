@@ -67,7 +67,7 @@ router.put("/upload/pfp",upload.single("image"), async (req,res) =>{
 			console.log("ID FOUND!")
 			if(deleteImg.profilePicture !== ""){
 				const imgId = deleteImg.profilePicture.split("/")
-				fs.unlinkSync("./public/" + imgId[imgId.length-1],(err) =>{
+				fs.unlinkSync(path.join(__dirname,"public",imgId[imgId.length-1]),(err) =>{
 					if(err){
 						console.log("file not deleted")
 					}
@@ -76,7 +76,7 @@ router.put("/upload/pfp",upload.single("image"), async (req,res) =>{
 			}
 		}
 
-		const imgUrl = process.env.SERVER_URL + req.file.filename
+		const imgUrl = (process.env.SERVER_URL || "https://morning-dusk-38549.herokuapp.com/") + req.file.filename
 		const updatePfp = await User.findOneAndUpdate({_id: req.decoded._id}, {profilePicture: imgUrl},(err)=>{
 			if(err){
 				res.status(400).json({message: err + " ID NOT FOUND"})
@@ -90,7 +90,7 @@ router.put("/upload/pfp",upload.single("image"), async (req,res) =>{
 //Create an Posting
 router.post("/add/post",upload.single('image'), async(req,res) =>{
 
-	const imgUrl = req.file ? process.env.SERVER_URL + req.file.filename : process.env.SERVER_URL 
+	const imgUrl = req.file ? (process.env.SERVER_URL || "https://morning-dusk-38549.herokuapp.com/") + req.file.filename : (process.env.SERVER_URL || "https://morning-dusk-38549.herokuapp.com/") 
 	const {title, price, location, category, description, premium} = req.body
 	const adPost =  new AdPost({
 		image: imgUrl,
@@ -113,7 +113,7 @@ router.put("/edit/post/:id",upload.single('image'), async(req,res) =>{
 	if(req.file){
 		const deleteImg = await AdPost.findOne({_id: req.params.id})
 		const imgId = deleteImg.image.split("/")
-		fs.unlinkSync("./public/" + imgId[imgId.length-1],(err) =>{
+				fs.unlinkSync(path.join(__dirname,"public",imgId[imgId.length-1]),(err) =>{
 			if(err){
 				console.log("file not deleted")
 			}
@@ -122,7 +122,7 @@ router.put("/edit/post/:id",upload.single('image'), async(req,res) =>{
 	}
 
 		let putRequest = []
-		putRequest.push({...req.body, image: (req.file ?  process.env.SERVER_URL+req.file.filename : null)})
+		putRequest.push({...req.body, image: (req.file ?  (process.env.SERVER_URL || "https://morning-dusk-38549.herokuapp.com/")+req.file.filename : null)})
 		putRequest.forEach(el => {
 		Object.keys(el).forEach(key => {
 			if (el[key] === null || el[key] === undefined || el[key] === 'null' || el[key] === 'undefined' ) {
@@ -144,7 +144,7 @@ router.put("/edit/post/:id",upload.single('image'), async(req,res) =>{
 router.delete("/delete/post/:id", async (req,res) =>{
 	const deleteImg = await AdPost.findOne({_id: req.params.id})
 	const imgId = deleteImg.image.split("/")
-	fs.unlinkSync("./public/" + imgId[imgId.length-1],(err) =>{
+				fs.unlinkSync(path.join(__dirname,"public",imgId[imgId.length-1]),(err) =>{
 		if(err){
 			console.log("file not deleted")
 		}
