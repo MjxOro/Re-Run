@@ -14,7 +14,10 @@ const authorize = require("./middleware/authorize")
 app.use(cors())
 app.use(express.json())
 app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"))
-
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  app.use(express.static(path.resolve(__dirname, "..", "client", "build")));
+}
 
 app.use(express.static(__dirname + '/public'));
 app.use('/preview',adPostRoutes)
