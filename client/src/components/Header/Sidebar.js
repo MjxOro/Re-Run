@@ -4,6 +4,7 @@ import { FiLogOut } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
 const Sidebar = (props) => {
+	console.log(props.randomCat())
 	return(
 		<>
 		{ props.blnClose ? <section className='sidebar' >
@@ -14,7 +15,7 @@ const Sidebar = (props) => {
 					</div>
 					<div className='sidebar__link-container'>
 						<Link to='/' className='sidebar__link'>Home</Link>
-						<Link to='/category/electronics' className='sidebar__link'>Category</Link>
+						<Link to={`/category/${props.randomCat()}`} className='sidebar__link'>Category</Link>
 						<Link to='/chat' className='sidebar__link'>Chat</Link>
 						<div onClick={props.handleCheckPoints} className='sidebar__link'>Points</div>
 						<Link to='/mypostings' className='sidebar__link'>My Postings</Link>

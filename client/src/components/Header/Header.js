@@ -87,6 +87,22 @@ class Header extends react.Component {
 			showPoints: false,
 		})
 	}
+	randomCategory = () =>{
+		const random = Math.floor(Math.random() * 4)
+		switch (random){
+			case 0:
+				return "electronics"
+			case 1:
+				return "clothing"
+			case 2:
+				return "general"
+			case 3:
+				return "gardening"
+			default:
+				return "electronics"
+		}
+
+	}
 
  transition = { duration: 0.6, ease:[0.43,0.13,0.23,0.96]}
 	render = () => {
@@ -127,7 +143,7 @@ class Header extends react.Component {
 					</div>
 					</nav>
 			</div>
-				<Sidebar handleCheckPoints={this.handleCheckPoints} handleLogout={this.handleLogout} currentUser={this.props.currentUser} close={this.handleSidebar} blnClose={this.state.showSidebar} />
+				<Sidebar randomCat={this.randomCategory} handleCheckPoints={this.handleCheckPoints} handleLogout={this.handleLogout} currentUser={this.props.currentUser} close={this.handleSidebar} blnClose={this.state.showSidebar} />
 			</header>
 			)}
 			</>
