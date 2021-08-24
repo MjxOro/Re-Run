@@ -10,11 +10,11 @@ const adPostRoutes = require('./routes/adPostRoutes')
 const AdPost = require('./models/adPosts')
 const secureUserRoutes = require('./routes/secure/sercureUser')
 const authorize = require("./middleware/authorize")
-
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'public')))
 
 app.use(cors())
 app.use(express.json())
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(morgan('dev'))
 
 
