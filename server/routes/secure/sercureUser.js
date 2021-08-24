@@ -5,6 +5,7 @@ const multer = require("multer")
 const upload = multer({dest: "public/"})
 const axios = require("axios")
 const fs = require("fs")
+const path = require("path")
 
 
 //ADD POINTS
@@ -67,7 +68,7 @@ router.put("/upload/pfp",upload.single("image"), async (req,res) =>{
 			console.log("ID FOUND!")
 			if(deleteImg.profilePicture !== ""){
 				const imgId = deleteImg.profilePicture.split("/")
-				fs.unlinkSync(path.join(__dirname,"public",imgId[imgId.length-1]),(err) =>{
+				fs.unlinkSync(path.join(__name,"/public/",imgId[imgId.length-1]),(err) =>{
 					if(err){
 						console.log("file not deleted")
 					}
@@ -113,7 +114,7 @@ router.put("/edit/post/:id",upload.single('image'), async(req,res) =>{
 	if(req.file){
 		const deleteImg = await AdPost.findOne({_id: req.params.id})
 		const imgId = deleteImg.image.split("/")
-				fs.unlinkSync(path.join(__dirname,"public",imgId[imgId.length-1]),(err) =>{
+				fs.unlinkSync(path.join(__name,"/public/",imgId[imgId.length-1]),(err) =>{
 			if(err){
 				console.log("file not deleted")
 			}
@@ -144,7 +145,7 @@ router.put("/edit/post/:id",upload.single('image'), async(req,res) =>{
 router.delete("/delete/post/:id", async (req,res) =>{
 	const deleteImg = await AdPost.findOne({_id: req.params.id})
 	const imgId = deleteImg.image.split("/")
-				fs.unlinkSync(path.join(__dirname,"public",imgId[imgId.length-1]),(err) =>{
+				fs.unlinkSync(path.join(__name,"/public/",imgId[imgId.length-1]),(err) =>{
 		if(err){
 			console.log("file not deleted")
 		}
