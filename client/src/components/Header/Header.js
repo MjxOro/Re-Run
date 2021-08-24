@@ -6,28 +6,20 @@ import axios from 'axios'
 import { CgAddR } from 'react-icons/cg'
 import { motion } from 'framer-motion'
 import PfpModal from '../PfpModal/PfpModal'
+import PointsModal from '../PointsModal/PointsModal'
 
 class Header extends react.Component {
 	state = {
 		showSidebar: false,
 		previewImg: null,
 		files: null,
+		showPoints: false,
 	} 
-	componentDidMount = () => {
-
-
-	}
 	handleUpload = (e) =>{
 		e.preventDefault()
 		const token = sessionStorage.getItem("token")
 		const formData = new FormData()
 		formData.append("image",!this.state.files ? 'null' : this.state.files)
-		formData.append("title",!this.state.title ? 'null' : this.state.title)
-		formData.append("price",!this.state.price ? 'null' : this.state.price)
-		formData.append("location",!this.state.location ? 'null' : this.state.location)
-		formData.append("category",!this.state.category ? 'null' : this.state.category)
-		formData.append("description",!this.state.description ? 'null' : this.state.description)
-		formData.append("premium",!this.state.premium ? 'null' : this.state.premium)
 
 		axios.put((process.env.REACT_APP_API_URL || "") + '/secure/edit/post/' + this.props.match.params.id, formData,{
 			headers: {
@@ -63,6 +55,9 @@ class Header extends react.Component {
 			previewImg: URL.createObjectURL(e.target.files[0])
 		})
 	}
+	handleCheckPoints = () =>{
+		this.setState({showPoints: true})
+	}
 	handleUpload = (e) =>{
 		e.preventDefault()
 		const token = sessionStorage.getItem("token")
@@ -87,13 +82,17 @@ class Header extends react.Component {
 		this.setState({showModal: true})
 	}
 	handleModalClose = () =>{
-		this.setState({showModal: false})
+		this.setState({
+			showModal: false,
+			showPoints: false,
+		})
 	}
 
  transition = { duration: 0.6, ease:[0.43,0.13,0.23,0.96]}
 	render = () => {
 		return(
 			<>
+			<PointsModal show={this.state.showPoints} close={this.handleModalClose} currentUser={this.props.currentUser} />
 			<PfpModal show={this.state.showModal} close={this.handleModalClose} handleUpload={this.handleUpload} previewImg={this.state.previewImg} handleChangePfp={this.handleChangePfp} 
 />
 			{this.props.currentUser && (
@@ -104,7 +103,7 @@ class Header extends react.Component {
 						<nav className='hd__desktop-nav'>
 							<Link to='/' className='hd__link'>Home</Link>
 							<Link to='/mypostings' className='hd__link'>My Postings</Link>
-							<Link to='/' className='hd__link'>Points</Link>
+							<div className='hd__link' onClick={this.handleCheckPoints} >Points</div>
 						</nav>
 						<Link to='/add/posts'>
 						<motion.div
@@ -128,7 +127,7 @@ class Header extends react.Component {
 					</div>
 					</nav>
 			</div>
-				<Sidebar handleLogout={this.handleLogout} currentUser={this.props.currentUser} close={this.handleSidebar} blnClose={this.state.showSidebar} />
+				<Sidebar handleCheckPoints={this.handleCheckPoints} handleLogout={this.handleLogout} currentUser={this.props.currentUser} close={this.handleSidebar} blnClose={this.state.showSidebar} />
 			</header>
 			)}
 			</>

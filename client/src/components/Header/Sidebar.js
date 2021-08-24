@@ -14,8 +14,9 @@ const Sidebar = (props) => {
 					</div>
 					<div className='sidebar__link-container'>
 						<Link to='/' className='sidebar__link'>Home</Link>
-						<Link to='/' className='sidebar__link'>Category</Link>
+						<Link to='/category/electronics' className='sidebar__link'>Category</Link>
 						<Link to='/chat' className='sidebar__link'>Chat</Link>
+						<div onClick={props.handleCheckPoints} className='sidebar__link'>Points</div>
 						<Link to='/mypostings' className='sidebar__link'>My Postings</Link>
 						<div className='sidebar__link'>
 							<FiLogOut onClick={props.handleLogout} className='sidebar__logout'/>
@@ -35,7 +36,8 @@ const Sidebar = (props) => {
 						<Link className='sidebar__link'>Home</Link>
 						<Link className='sidebar__link'>Category</Link>
 						<Link className='sidebar__link'>Chat</Link>
-						<Link  className='sidebar__link'>My Postings</Link>
+						<div className='sidebar__link'>Points</div>
+						<Link className='sidebar__link'>My Postings</Link>
 						<div className='sidebar__link'>
 							<FiLogOut className='sidebar__logout'/>
 							<p className='sidebar__logout-text'>Logout</p>
