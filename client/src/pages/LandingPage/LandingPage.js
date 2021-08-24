@@ -8,7 +8,7 @@ import axios from 'axios'
 
 class LandingPage extends react.Component{
 	state ={
-		postCards: null,
+		postCards: [],
 		title2: ['Run','Fresh','Cycle'],
 		index: 0,
 		direction: [5000,-5000],
