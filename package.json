@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/MjxOro/glowing-lamp/issues"
   },
-  "homepage": "https://github.com/MjxOro/glowing-lamp#readme",
+  "homepage": "/",
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "react-icons": "^4.2.0",
