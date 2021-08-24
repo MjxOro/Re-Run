@@ -1,70 +1,38 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# BrainStation Capstone Project
 
-## Available Scripts
+## Description
+This project was to display the capability and skills of being a fullstack web developer.The front-end of the website was built with
+react.js and styled using Sass. The backend is built with Node.js and Express.js.
+The website has full CRUD functionality where the information is stored in a database, the choice of database for this poject is MongoDB.
+There are also 3rd party api's included in this project which will require a secret API key to use to full extent.
 
-In the project directory, you can run:
+## RE-Run
+Re-run is the company name I came up with when building this website. The puropose of this website is a local classifields posting website
+where users are free to post services and products. This website has similar features to other local classfields websites like: ceate, edit, read and delete
+postings, Google maps integration and in app chat feature. The unique feature of this website is a loyalty point system where users are rewarded points from simply browsing the website. Users can redeem these points to have their posts featured on the hero banner to increase viewability of postings.
 
-### `npm start`
+## Getting Started
+First clone the repository using the command `git clone https://github.com/MjxOro/Re-Run.git` then install the dependencies on the `./client` and `./server`
+directories using `npm install`. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Once the dependencies are installed, fill in the `.env.sample` variables in both `/client` and `/server` directories.
+Then launch the project by using `npm start` on the `./client` directory and `nodemon index.js` on the `./server` directory.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Google Maps API KEY
+To get a google api key, you would need to head to https://developers.google.com/maps and signup for their free trial (Credit card Required).
+this key is NOT exclusive to google maps so feel free to use this key for other google api features! Once your account is created, find your API key on 
+the account dashboard and copy that key and paste it in your `.env.sample` file in the `./client` directory. The last step is to enable the use of your key 
+for google maps, which is also located in your account dashboard.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### SendBird APP KEY & API KEY
+To get the SendBird keys, you would need to head to https://dashboard.sendbird.com/auth/signup and signup for their free trial.
+Both of these keys are located in your account settings. Once you get your keys, copy and paste the keys in `.env.sample` located in both `./client` and `./server`
+directories.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
