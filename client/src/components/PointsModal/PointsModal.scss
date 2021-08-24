@@ -37,6 +37,7 @@
 			height: 40%;
 			max-width: 768px;
 			max-height: 18rem;
+			margin: 0 auto;
 
 		}
 		@include desktop{
@@ -69,7 +70,7 @@
 		display:flex;
 		height: 5rem;
 		justify-content: center;
-		align-items: flex-start;
+		align-items: center;
 		border-radius: 1rem;
 		background-color: $light-mint;
 		@include tablet{
