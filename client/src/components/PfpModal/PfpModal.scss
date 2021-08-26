@@ -37,6 +37,9 @@
 			max-width: 980px;
 
 		}
+		@include desktop{
+			height: 45rem;
+		}
 
 	}
 	&__header{
@@ -98,7 +101,7 @@
 		width: 5rem;
 	}
 	&__upload{
-		visibility: hidden;;
+		visibility: hidden;
 	}
 	&__preview{
 		pointer-events: none;
