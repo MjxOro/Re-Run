@@ -1,5 +1,5 @@
 
-# BrainStation Capstone Project
+# Local Classifieds Website
 
 ## Description
 This project was to display the capability and skills of being a fullstack web developer.The front-end of the website was built with
