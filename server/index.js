@@ -28,7 +28,7 @@ app.use("/preview", adPostRoutes);
 app.use("/users", userRoutes);
 app.use("/secure", authorize, secureUserRoutes);
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "production") {
   // Handle React routing, return all requests to React app
   app.use(express.static(path.resolve(__dirname, "..", "client", "build")));
   app.get("*", (request, response) => {
