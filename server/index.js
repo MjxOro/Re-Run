@@ -1,31 +1,35 @@
-require('dotenv').config()
-const express = require("express")
-const app = express()
-const mongoose = require('mongoose')
-const cors = require('cors')
-const morgan = require('morgan')
-const PORT = process.env.PORT || 8080
-const userRoutes = require('./routes/userRoutes')
-const adPostRoutes = require('./routes/adPostRoutes')
-const AdPost = require('./models/adPosts')
-const secureUserRoutes = require('./routes/secure/sercureUser')
-const authorize = require("./middleware/authorize")
+require("dotenv").config();
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const cors = require("cors");
+const morgan = require("morgan");
+const PORT = process.env.PORT || 8080;
+const userRoutes = require("./routes/userRoutes");
+const adPostRoutes = require("./routes/adPostRoutes");
+const AdPost = require("./models/adPosts");
+const secureUserRoutes = require("./routes/secure/sercureUser");
+const authorize = require("./middleware/authorize");
 const path = require("path");
 
-mongoose.connect(process.env.MONGODB_URL,{useNewUrlParser: true,useUnifiedTopology: true},() =>{
-	console.log('connected to DB')
-})
-app.use(cors())
-app.use(express.json())
-app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"))
+mongoose.connect(
+  process.env.MONGODB_URL,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("connected to DB");
+  }
+);
+app.use(cors());
+app.use(express.json());
+app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 if (process.env.NODE_ENV === "production") {
   // Serve any static files
   app.use(express.static(path.resolve(__dirname, "..", "client", "build")));
 }
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/preview',adPostRoutes)
-app.use('/users',userRoutes)
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/preview", adPostRoutes);
+app.use("/users", userRoutes);
 app.use("/secure", authorize, secureUserRoutes);
 
 if (process.env.NODE_ENV === "production") {
@@ -36,6 +40,6 @@ if (process.env.NODE_ENV === "production") {
     );
   });
 }
-app.listen(PORT,(req,res)=>{
-	console.log('Server started, Listening on port ' + PORT)
-})
+app.listen(PORT, (req, res) => {
+  console.log("Server started, Listening on port " + PORT);
+});
