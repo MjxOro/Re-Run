@@ -1,5 +1,7 @@
 
 # Local Classifieds Website
+Demo the app here: https://re-run-cuqwd.ondigitalocean.app/
+*Chat currently not working
 
 ## Description
 This project was to display the capability and skills of being a fullstack web developer.The front-end of the website was built with
@@ -33,6 +35,10 @@ for google maps, which is also located in your account dashboard.
 To get the SendBird keys, you would need to head to https://dashboard.sendbird.com/auth/signup and signup for their free trial.
 Both of these keys are located in your account settings. Once you get your keys, copy and paste the keys in `.env.sample` located in both `./client` and `./server`
 directories.
+
+##TODO
+- Re write code in typescript to ensure code scalability
+- Fix chat feature
 
 
 
