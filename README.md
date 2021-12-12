@@ -10,7 +10,7 @@ The website has full CRUD functionality where the information is stored in a dat
 There are also 3rd party api's included in this project which will require a secret API key to use to full extent.
 
 ## RE-Run
-Re-run is the company name I came up with when building this website. The puropose of this website is a local classifields posting website
+Re-run is the application name I came up with when building this website. The puropose of this website is a local classifields posting website
 where users are free to post services and products. This website has similar features to other local classfields websites like: ceate, edit, read and delete
 postings, Google maps integration and in app chat feature. The unique feature of this website is a loyalty point system where users are rewarded points from simply browsing the website. Users can redeem these points to have their posts featured on the hero banner to increase viewability of postings.
 
