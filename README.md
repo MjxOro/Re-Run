@@ -36,7 +36,7 @@ To get the SendBird keys, you would need to head to https://dashboard.sendbird.c
 Both of these keys are located in your account settings. Once you get your keys, copy and paste the keys in `.env.sample` located in both `./client` and `./server`
 directories.
 
-##TODO
+## TODO
 - Re write code in typescript to ensure code scalability
 - Fix chat feature
 
