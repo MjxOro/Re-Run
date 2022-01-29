@@ -16,7 +16,7 @@ import Clothing from "./pages/Clothing/Clothing";
 import General from "./pages/General/General";
 import Gardening from "./pages/Gardening/Gardening";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Route
@@ -45,5 +45,5 @@ function App() {
       />
     </BrowserRouter>
   );
-}
+};
 export default App;
