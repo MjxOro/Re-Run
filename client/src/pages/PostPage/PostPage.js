@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../../components/Header/Header";
-import jsonData from "../../cardData.json";
 import Post from "../../components/Post/Post";
 import SimpleMap from "../../components/Maps/Maps";
 import axios from "axios";
@@ -9,7 +8,6 @@ import Geocode from "react-geocode";
 
 class PostPage extends React.Component {
   state = {
-    heroObj: jsonData,
     index: 0,
     currentUser: null,
     filterPost: null,
