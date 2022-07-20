@@ -19,7 +19,6 @@ class LandingPage extends react.Component {
         this.setState({ postCards: res.data });
       });
     this.myInterval = setInterval(() => {
-      console.log("HELLO");
       if (this.state.index < 2) {
         this.setState({ index: this.state.index + 1 });
       } else {

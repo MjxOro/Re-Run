@@ -16,7 +16,6 @@ class SignUp extends React.Component{
 	}
 
 	handleChange = (e) =>{
-		console.log([e.target.value])
 		this.setState({
 			userInfo: { ...this.state.userInfo, [e.target.name]: e.target.value }
 		})
@@ -28,7 +27,6 @@ class SignUp extends React.Component{
 		const data = e.target
 		let formErr = {username:false, email:false, password:false}
 		if(!data.username.value || !data.email.value || !data.password.value){
-			console.log(e.target.username.value)
 
 			if(data.username.value === ''){
 				formErr.username = true
@@ -48,7 +46,6 @@ class SignUp extends React.Component{
 			}
 		}
 		else if(!emailRegex.test(String(this.state.userInfo.email.toLowerCase()))){
-				console.log('PING')
 				formErr.validEmail = true
 				this.setState({err: formErr})
 		}
